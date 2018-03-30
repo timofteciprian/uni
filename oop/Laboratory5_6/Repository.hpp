@@ -22,7 +22,7 @@ public:
     
         void addExpense(Expense ex);
         DynamicVector <Expense>& getAll();
-        void elimCostsOfApartment(unsigned int no);
+        void elimCostsOfApartment(Expense );
         /*
          void elimCostsMoreApartments(unsigned int* l );
          void elimAllGas();

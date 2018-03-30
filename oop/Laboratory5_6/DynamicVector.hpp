@@ -22,7 +22,7 @@ public:
         length = 0;
         arr = new T[capacity];
     }
-    /** Default destructor */
+    /** Default constructor with param */
     ~DynamicVector() {
         capacity = 0;
         length = 0;

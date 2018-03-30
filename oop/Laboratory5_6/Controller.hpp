@@ -22,7 +22,9 @@ public:
     
     void addExpense(unsigned int no, unsigned int sum, Expense::ExpenseType tip);
     DynamicVector<Expense> &getAll();
-    void elimCostsOfApartment(unsigned int);
+    void elimCostsOfApartment(unsigned int, unsigned int, Expense::ExpenseType);
+    void elimCostsMoreApartments(int,int*);
+    
 };
 
 #endif /* Controller_hpp */

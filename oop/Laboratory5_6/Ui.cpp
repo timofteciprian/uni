@@ -8,7 +8,8 @@
 
 
 #include <iostream>
-#include <string>
+#include <string.h>
+#include <cstring>
 #include "Ui.hpp"
 
 Ui::Ui(Controller &ctrl): ctrl(ctrl) {
@@ -29,22 +30,51 @@ void Ui::mainSupport(){
 }
 
 void Ui::addExpense(){
-    unsigned int no, sum;
-    char tip1;
-    Expense::ExpenseType tip;
-    cout<<"Dati numarul apartmentului: ";
+    unsigned int no, sum, com=0;
+    string typee;
+    cout<<"Give the number of the apartment: ";
     cin>>no;
-    cout<<"Dati suma cheltuielii: ";
+    cout<<"Give the amount of the expense: ";
     cin>>sum;
-    cout<<"Dati tipul cheltuielii (Water, Heat, Electricy, Gas, More): ";
-    cin.get();
-    cin.get(tip1);
-    tip = static_cast<Expense::ExpenseType> (tip1);
-    this->ctrl.addExpense(no, sum, tip);
+    cout<<"Give the type of spending (Water, Heat, Electricy, Gas, More): ";
+    cin>>typee;
+    string array[] = {"Water", "Heat", "Electricy", "Gas", "More"};
+    for(int i=0; i<5; i++){
+        if(array[i] == typee)
+            com = i;
+    }
+    Expense::ExpenseType expenseTyppe = Expense::ExpenseType::Water;
+    switch (com) {
+        case 0:
+            expenseTyppe = Expense::ExpenseType::Water;     break;
+        case 1:
+            expenseTyppe = Expense::ExpenseType::Heat;      break;
+        case 2:
+            expenseTyppe = Expense::ExpenseType::Electricy; break;
+        case 3:
+            expenseTyppe = Expense::ExpenseType::Gas;       break;
+        case 4:
+            expenseTyppe = Expense::ExpenseType::More;      break;
+    }
+    this->ctrl.addExpense(no, sum, expenseTyppe);
 }
 
-void Ui::printOneExpense(Expense &c){
-    cout<<"Numarul apartamentului " <<c.getNoApartment() << " are suma de "<< c.getSum() << " pentru cheltuiala " << c.getExpenseType() << endl ;
+ostream& operator<<(std::ostream& os, Expense::ExpenseType t  )
+{
+    switch(t)
+    {
+        case  0: os << "Water";      break;
+        case  1: os << "Heat";       break;
+        case  2: os << "Electricy";  break;
+        case  3: os << "Gas";        break;
+        case  4: os << "More";       break;
+        default    : os.setstate(std::ios_base::failbit);
+    }
+    return os;
+}
+
+void Ui::printOneExpense(Expense e){
+    cout<<"Numarul apartamentului " << e.getNoApartment() << " are suma de "<< e.getSum() << " pentru cheltuiala " << e.getExpenseType() << endl ;
 }
 
 void Ui::printAllCosts(){
@@ -56,49 +86,56 @@ void Ui::printAllCosts(){
     
 }
 
-int Ui::findIndex(unsigned int index,unsigned int no){
-    DynamicVector<Expense> all = this->ctrl.getAll();
-    for(int i=index; i<all.size(); i++){
-        Expense ex = all[i];
-        if(ex.getNoApartment() == no)
-            return i;
-    }
-    return -1;
-}
-
-
 void Ui::elimCostsOfApartment(){
-    unsigned int no,index;
-    index=0;
+    int no, sum;
+    Expense::ExpenseType typpe;
     cout<<"Dati numarul apartamentului: ";
     cin>>no;
-    if(findIndex(index,no) != -1)
-        this->ctrl.elimCostsOfApartment(findIndex(index,no));
+    DynamicVector<Expense> all = this->ctrl.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(ex.getNoApartment() == no){
+            sum = ex.getSum();
+            typpe = ex.getExpenseType();
+            this->ctrl.elimCostsOfApartment(no,sum,typpe);
+        }
+    }
 }
 
-/*
-     void elimAllGas(){
-     this->ctrl.elimALlGas();
-     }
-     
-     void elimiCostsMoreApartment(){
-     int d, *l;
-     bool stop = true;
-     d=0;
-     cout<<"--------- Se adauga numere pana la adugarea cifrei 0 ---------";
-     cout<<"--------------Adaugati numere apoi dati ENTER----------------";
-     while(stop){
-     cout<<"Dati numarul: ";
-     cin>>l[d];
-     if(l[d] != 0)
-     d++;
-     else
-     stop false;
-     }
-     d--;
-     this->ctrl.elimCostsMoreApartment(d,l);
-     }
-*/
+void Ui::allocation(int &size, int* &array){
+    int *newarray;
+    size *= 2;
+    newarray = new int[size];
+    for(int i = 0 ; i < size / 2 ; ++ i)
+            newarray[i] = array[i];
+    delete [] array;
+    array = newarray;
+}
+
+void Ui::elimCostsMoreApartments(){
+    int size,count, *array, no;
+    count=0;
+    size=2;
+    array = new int[size];
+    bool stop = true;
+    cout<<"--------------------      Add numbers until you add 0       ----------------------"<<endl;
+    cout<<"--------------------       Add one number then ENTER        ----------------------"<<endl;
+    while(stop){
+        cout<<"Give the number: ";
+        cin>>no;
+        if(no != 0){
+            if(size == count)
+                allocation(size,array);
+            array[count] = no;
+            count++;
+        }
+        else
+            stop = false;
+        }
+    this->ctrl.elimCostsMoreApartments(count,array);
+    delete[] array;
+}
+
     
     
 void Ui::run(){
@@ -113,18 +150,28 @@ void Ui::run(){
         
         switch(com){
             case 0:
-                    cout<<endl;
-                    cout<<"bye bye";
-                    quit = false;
-                    break;
+                cout<<endl;
+                cout<<"bye bye";
+                quit = false;
+                break;
                 
             case 1:
-                    addExpense();
-                    break;
-            
+                addExpense();
+                break;
+        
             case 2:
-                    printAllCosts();
-                    break;
+                printAllCosts();
+                break;
+                
+            case 3:
+                elimCostsOfApartment();
+                break;
+                
+            case 4:
+                elimCostsMoreApartments();
+                break;
+                
+                
                 
         }
     }

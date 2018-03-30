@@ -17,24 +17,36 @@ using namespace std;
 
 //using namespace typeNs;
 
+/** Default constructor */
+
 Expense::Expense(){
+    this->noApartment = 0;
+    this->sum = 0;
 }
 
+/** Default constructor with param  */
+
 Expense::Expense(unsigned int no, unsigned int s ,Expense::ExpenseType t){
-    cout<<"constructor with param";
     this->noApartment = no;
     this->sum = s;
     this->typee = t;
 }
 
+/* Copy constructor
+  param other Object to copy from
+ */
+
 Expense::Expense(const Expense &e){
-    cout<<"copy constructor";
     this->noApartment = e.noApartment;
     this->sum = e.sum;
     this->typee = e.typee;
 }
 
+/** Default destructor */
+
 Expense::~Expense(){
+    this->noApartment = 0;
+    this->sum = 0;    
 }
 
 

@@ -23,10 +23,25 @@ DynamicVector<Expense> &Controller::getAll(){
 }
 
 
-void Controller::elimCostsOfApartment(unsigned int no){
-    this->repo.elimCostsOfApartment(no);
+void Controller::elimCostsOfApartment(unsigned int no, unsigned int sum, Expense::ExpenseType typpe){
+    Expense ex (no,sum, typpe);
+    this->repo.elimCostsOfApartment(ex);
 }
 
-
- //void elimiCostsMoreApartment()
+void Controller::elimCostsMoreApartments(int count, int* array){
+    int no,sum;
+    Expense::ExpenseType typpe;
+    DynamicVector<Expense> all = this->repo.getAll();
+    for(int i=0; i<count; i++){
+        no = array[i];
+        for(int i=0; i<all.size(); i++){
+            Expense ex = all[i];
+            if(ex.getNoApartment() == no){
+                sum = ex.getSum();
+                typpe = ex.getExpenseType();
+            this->repo.elimCostsOfApartment(Expense(no,sum,typpe));
+            }
+        }
+    }
+}
 

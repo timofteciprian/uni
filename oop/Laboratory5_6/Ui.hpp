@@ -20,14 +20,19 @@ public:
     
     void mainSupport();
     void addExpense();
-    void printOneExpense(Expense&);
+    void printOneExpense(Expense e);
     void printAllCosts();
     void elimCostsOfApartment();
-    int findIndex(unsigned int, unsigned int);
+    void elimCostsMoreApartments();
+    void allocation(int&, int* &);
     void run();
     
     
+    
+    
 };
+
+
 
 
 

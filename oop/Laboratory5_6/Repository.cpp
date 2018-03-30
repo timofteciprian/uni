@@ -8,29 +8,36 @@
 
 #include "Repository.hpp"
 #include <iostream>
- 
+/*
+ decr: adauga un obiect de tip Expence
+ in: ex
+ out:-
+ */
 void Repository::addExpense(Expense ex){
     this->costs = this->costs + ex;
 }
-
+/*
+ decr: returneaza lista de tip Expence
+ in:
+ out: costs
+ */
 DynamicVector<Expense> &Repository::getAll(){
     return this->costs;
 }
 
-*/
-void Repository::elimCostsOfApartment(unsigned int no){
-    for(int i=0; i<)
+
+void Repository::elimCostsOfApartment(Expense ex){
+    this->costs = this->costs - ex;
 }
-*/
+
 /*
- 
  void elimiCostsMoreApartment(int d, unsigned int* l){
- for(int i=0; i<d; i++)
- for(int j=0; j<this->dim; j++)
- if(l[i] == cheltuieli[j]){
- cheltuieli[j] = cheltuieli[j+1];
- this->dim--;
- }
+    for(int i=0; i<d; i++)
+        for(int j=0; j<this->dim; j++)
+            if(l[i] == cheltuieli[j]){
+                cheltuieli[j] = cheltuieli[j+1];
+                this->dim--;
+            }
  }
  */
 
@@ -58,17 +65,16 @@ DynamicVector <Expense> operator - (const DynamicVector <Expense> &a, const Expe
 
 /*
  Repository& Repository::operator=(const Repository &c){
- if (this == &c){
- this->sizeList = c.sizeList;
- this->countList = c.countList;
+    if (this == &c){
+        this->sizeList = c.sizeList;
+        this->countList = c.countList;
  
- delete[] this->costs;
- this->costs = new Expense[this->sizeList];
+        delete[] this->costs;
+        this->costs = new Expense[this->sizeList];
  
- for (int i = 0; i < this->countList; i++)
- this->costs[i] = c.costs[i];
- 
- }
- return *this;
+        for (int i = 0; i < this->countList; i++)
+        this->costs[i] = c.costs[i];
+    }
+    return *this;
  }
  */
