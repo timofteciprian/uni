@@ -38,11 +38,7 @@ void Ui::addExpense(){
     cin>>sum;
     cout<<"Give the type of spending (Water, Heat, Electricy, Gas, More): ";
     cin>>typee;
-    string array[] = {"Water", "Heat", "Electricy", "Gas", "More"};
-    for(int i=0; i<5; i++){
-        if(array[i] == typee)
-            com = i;
-    }
+    com = typeOfExpense(typee);
     Expense::ExpenseType expenseTyppe = Expense::ExpenseType::Water;
     switch (com) {
         case 0:
@@ -74,7 +70,7 @@ ostream& operator<<(std::ostream& os, Expense::ExpenseType t  )
 }
 
 void Ui::printOneExpense(Expense e){
-    cout<<"Numarul apartamentului " << e.getNoApartment() << " are suma de "<< e.getSum() << " pentru cheltuiala " << e.getExpenseType() << endl ;
+    cout<<"Apartment with the number " << e.getNoApartment() << " has the sum of "<< e.getSum() << " for expense " << e.getExpenseType() << endl ;
 }
 
 void Ui::printAllCosts(){
@@ -89,7 +85,7 @@ void Ui::printAllCosts(){
 void Ui::elimCostsOfApartment(){
     int no, sum;
     Expense::ExpenseType typpe;
-    cout<<"Dati numarul apartamentului: ";
+    cout<<"Give the number of the apartment: ";
     cin>>no;
     DynamicVector<Expense> all = this->ctrl.getAll();
     for(int i=0; i<all.size(); i++){
@@ -135,14 +131,26 @@ void Ui::elimCostsMoreApartments(){
     this->ctrl.elimCostsMoreApartments(count,array);
     delete[] array;
 }
-
+int Ui::typeOfExpense(string typee){
+    int com=0;
+    string array[] = {"Water", "Heat", "Electricy", "Gas", "More"};
+    for(int i=0; i<5; i++){
+        if(array[i] == typee)
+            com = i;
+    }
+    return com;
+}
 void Ui::elimAllGas(){
-    int no, sum;
+    int no, sum, com=0;
+    string typee;
+    cout<<"Give the type of spending of the apartment: ";
+    cin>>typee;
+    com = typeOfExpense(typee);
     Expense::ExpenseType typpe;
     DynamicVector<Expense> all = this->ctrl.getAll();
     for(int i=0; i<all.size(); i++){
         Expense ex = all[i];
-        if(ex.getExpenseType() == 3){
+        if(ex.getExpenseType() == com){
             no = ex.getNoApartment();
             sum = ex.getSum();
             typpe = ex.getExpenseType();
