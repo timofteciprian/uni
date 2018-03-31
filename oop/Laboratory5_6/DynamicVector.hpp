@@ -50,11 +50,6 @@ public:
             arr[i] = other.arr[i];
         return *this;
     }
-/*
-    bool operator==(const DynamicVector& other){
-        return ()
-
- */
     
     void push_back(T el) {
         if(length == capacity) {

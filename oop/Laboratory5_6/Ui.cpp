@@ -19,12 +19,12 @@ Ui::Ui(Controller &ctrl): ctrl(ctrl) {
 void Ui::mainSupport(){
     cout<<endl;
     cout<<"    ----------------------------    Main    ---------------------------------"<<endl;
-    cout<<"       0. Inchide aplicatia."<<endl;
-    cout<<"       1. Adauga numarul si cheltuiala unui apatament."<<endl;
-    cout<<"       2. Afisarea tuturor cheltuielilor."<<endl;
-    cout<<"       3. Elimina toate cheltielile unui apartament."<<endl;
-    cout<<"       4. Eliminarea cheltueltuielilor unor apartmente."<<endl;
-    cout<<"       5. Eliminarea cheluielilor cu gazul de la toate apartamentele."<<endl;
+    cout<<"       0. Exit."<<endl;
+    cout<<"       1. Add the number and the expense of an apartment."<<endl;
+    cout<<"       2. Show all costs"<<endl;
+    cout<<"       3. Eliminate all the cost of an apartment."<<endl;
+    cout<<"       4. Eliminating spending on some apartments."<<endl;
+    cout<<"       5. Elimination of gas expenses from all apartments."<<endl;
  
     cout<<"    --------------------------------------------------------------------------"<<endl;
 }
@@ -136,7 +136,20 @@ void Ui::elimCostsMoreApartments(){
     delete[] array;
 }
 
-    
+void Ui::elimAllGas(){
+    int no, sum;
+    Expense::ExpenseType typpe;
+    DynamicVector<Expense> all = this->ctrl.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(ex.getExpenseType() == 3){
+            no = ex.getNoApartment();
+            sum = ex.getSum();
+            typpe = ex.getExpenseType();
+            this->ctrl.elimCostsOfApartment(no,sum,typpe);
+        }
+    }
+}
     
 void Ui::run(){
     int com;
@@ -170,8 +183,9 @@ void Ui::run(){
             case 4:
                 elimCostsMoreApartments();
                 break;
-                
-                
+            case 5:
+                elimAllGas();
+                break;
                 
         }
     }

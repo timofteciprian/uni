@@ -25,15 +25,8 @@ public:
     void elimCostsOfApartment();
     void elimCostsMoreApartments();
     void allocation(int&, int* &);
+    void elimAllGas();
     void run();
-    
-    
-    
-    
 };
-
-
-
-
 
 #endif /* Ui_hpp */
