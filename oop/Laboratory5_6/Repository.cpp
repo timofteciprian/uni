@@ -30,17 +30,9 @@ void Repository::elimCostsOfApartment(Expense ex){
     this->costs = this->costs - ex;
 }
 
-/*
- void elimiCostsMoreApartment(int d, unsigned int* l){
-    for(int i=0; i<d; i++)
-        for(int j=0; j<this->dim; j++)
-            if(l[i] == cheltuieli[j]){
-                cheltuieli[j] = cheltuieli[j+1];
-                this->dim--;
-            }
- }
- */
-
+void Repository::replaceSumExpense(int index, unsigned int newSum){
+    this->costs[index].setSum(newSum);
+}
 
 DynamicVector <Expense> operator + (const DynamicVector <Expense> &a, const Expense &b) {
     DynamicVector <Expense> ret = a;

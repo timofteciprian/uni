@@ -25,6 +25,7 @@ void Ui::mainSupport(){
     cout<<"       3. Eliminate all the cost of an apartment."<<endl;
     cout<<"       4. Eliminating spending on some apartments."<<endl;
     cout<<"       5. Elimination of gas expenses from all apartments."<<endl;
+    cout<<"       6. The old amount of type expensed is REPLACE from the apartment with the sum"<<endl;
  
     cout<<"    --------------------------------------------------------------------------"<<endl;
 }
@@ -140,7 +141,7 @@ int Ui::typeOfExpense(string typee){
     }
     return com;
 }
-void Ui::elimAllGas(){
+void Ui::elimAllSpendingWithOneType(){
     int no, sum, com=0;
     string typee;
     cout<<"Give the type of spending of the apartment: ";
@@ -158,7 +159,20 @@ void Ui::elimAllGas(){
         }
     }
 }
-    
+
+void Ui::replaceSumExpense(){
+    unsigned int no, newSum, com=0;
+    string typee;
+    cout<<"Give the number of the apartment: ";
+    cin>>no;
+    cout<<"Give the type of spending (Water, Heat, Electricy, Gas, More): ";
+    cin>>typee;
+    cout<<"Give NEW sum of the expense: ";
+    cin>>newSum;
+    com = typeOfExpense(typee);
+    this->ctrl.replaceSumExpense(no, newSum, com);
+}
+
 void Ui::run(){
     int com;
     bool quit = true;
@@ -192,14 +206,14 @@ void Ui::run(){
                 elimCostsMoreApartments();
                 break;
             case 5:
-                elimAllGas();
+                elimAllSpendingWithOneType();
+                break;
+                
+            case 6:
+                replaceSumExpense();
                 break;
                 
         }
     }
 }
-    
-inline istream& operator>>(istream &is, Expense::ExpenseType &e){
-    
-    return is;
-}
+

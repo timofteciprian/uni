@@ -23,6 +23,7 @@ public:
         void addExpense(Expense ex);
         DynamicVector <Expense>& getAll();
         void elimCostsOfApartment(Expense );
+    void replaceSumExpense(int index, unsigned int sum);
 /*
          void replacesGas(unsigned int nr, unsigned int sum);
          void getCostsOfApartment(unsigned int nr);

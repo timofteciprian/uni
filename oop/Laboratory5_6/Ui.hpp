@@ -25,8 +25,9 @@ public:
     void elimCostsOfApartment();
     void elimCostsMoreApartments();
     void allocation(int&, int* &);
-    void elimAllGas();
+    void elimAllSpendingWithOneType();
     int typeOfExpense(string);
+    void replaceSumExpense();
     void run();
 };
 

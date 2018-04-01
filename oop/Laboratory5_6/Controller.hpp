@@ -24,6 +24,9 @@ public:
     DynamicVector<Expense> &getAll();
     void elimCostsOfApartment(unsigned int, unsigned int, Expense::ExpenseType);
     void elimCostsMoreApartments(int,int*);
+    void replaceSumExpense(unsigned int no, unsigned int sum,unsigned int typee);
+    int findExpense(unsigned int no, unsigned int typee);
+
     
 };
 
