@@ -29,6 +29,7 @@ public:
     int typeOfExpense(string);
     void replaceSumExpense();
     void printExpenseApartment();
+    void printExpensesWithHigherSum();
     void run();
 };
 

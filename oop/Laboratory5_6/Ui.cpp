@@ -27,6 +27,7 @@ void Ui::mainSupport(){
     cout<<"       5. Elimination of gas expenses from all apartments."<<endl;
     cout<<"       6. The old amount of type expensed is REPLACE from the apartment with the sum"<<endl;
     cout<<"       7. Print the apartament costs."<<endl;
+    cout<<"       8. Print higher expenses than the amount for all apartments"<<endl;
  
     cout<<"    --------------------------------------------------------------------------"<<endl;
 }
@@ -186,7 +187,19 @@ void Ui::printExpenseApartment(){
         sum = ex.getSum();
         typee = ex.getExpenseType();
         if(no == ex.getNoApartment())
-            cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " <<ex.getExpenseType()<<endl ;
+            cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " <<ex.getExpenseType()<<endl;
+    }
+}
+
+void Ui::printExpensesWithHigherSum(){
+    unsigned int newSum;
+    cout<<"Give the higher value";
+    cin>>newSum;
+    DynamicVector<Expense> all = this->ctrl.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(newSum < ex.getSum())
+            cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
     }
 }
 
@@ -234,6 +247,9 @@ void Ui::run(){
                 printExpenseApartment();
                 break;
                 
+            case 8:
+                printExpensesWithHigherSum();
+                break;
         }
     }
 }
