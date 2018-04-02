@@ -80,3 +80,21 @@ int Controller::sumAllTypeExpense(int typee){
     }
     return sum;
 }
+
+int Controller::sumHighOfApartment(unsigned int no){
+    int sum = 0, index = -1;
+    DynamicVector<Expense> all = this->repo.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(no == ex.getNoApartment() and sum < ex.getSum()){
+            sum = ex.getSum();
+            index = i;
+        }
+    }
+    return index;
+}
+
+
+
+
+

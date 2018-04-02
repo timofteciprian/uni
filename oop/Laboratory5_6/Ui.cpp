@@ -30,6 +30,7 @@ void Ui::mainSupport(){
     cout<<"       8. Print higher expenses than the amount for all apartments"<<endl;
     cout<<"       9. Print expenses with sum "<<endl;
     cout<<"       10. Print sum for all expenses with type expense"<<endl;
+    cout<<"       11. Print high sum of apartment"<<endl;
  
     cout<<"    --------------------------------------------------------------------------"<<endl;
 }
@@ -227,6 +228,17 @@ void Ui::printTotalSumWithTypeEx(){
     cout<<this->ctrl.sumAllTypeExpense(index);
 }
 
+void Ui::printHighSumOfApartment(){
+    unsigned int no;
+    int index;
+    cout<<"Give the number of apartment: ";
+    cin>>no;
+    index = this->ctrl.sumHighOfApartment(no);
+    DynamicVector<Expense> all = this->ctrl.getAll();
+    Expense ex = all[index];
+    cout<<"Apartment with the number " << ex.getNoApartment() << " has the high sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
+}
+
 void Ui::run(){
     int com;
     bool quit = true;
@@ -281,6 +293,10 @@ void Ui::run(){
             
             case 10:
                 printTotalSumWithTypeEx();
+                break;
+                
+            case 11:
+                printHighSumOfApartment();
                 break;
         }
     }

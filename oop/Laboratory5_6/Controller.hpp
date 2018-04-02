@@ -28,6 +28,7 @@ public:
     int findExpenseByNoAndSum(unsigned int no, unsigned int typee);
     int findExpenseByNo(unsigned int no);
     int sumAllTypeExpense(int index);
+    int sumHighOfApartment(unsigned int no);
     
 };
 

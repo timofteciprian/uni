@@ -32,6 +32,7 @@ public:
     void printExpensesWithHigherSum();
     void printExpensesWithSumAllAp();
     void printTotalSumWithTypeEx();
+    void printHighSumOfApartment();
     void run();
 };
 
