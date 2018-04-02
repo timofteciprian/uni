@@ -70,3 +70,13 @@ int Controller::findExpenseByNo(unsigned int no){
     return -1;
 }
 
+int Controller::sumAllTypeExpense(int typee){
+    int sum = 0;
+    DynamicVector<Expense> all = this->repo.getAll();
+    for( int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(ex.getExpenseType() == typee)
+            sum = sum + ex.getSum();
+    }
+    return sum;
+}

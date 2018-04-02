@@ -27,7 +27,7 @@ public:
     void replaceSumExpense(unsigned int no, unsigned int sum,unsigned int typee);
     int findExpenseByNoAndSum(unsigned int no, unsigned int typee);
     int findExpenseByNo(unsigned int no);
-
+    int sumAllTypeExpense(int index);
     
 };
 

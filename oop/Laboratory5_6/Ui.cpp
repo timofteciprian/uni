@@ -28,6 +28,8 @@ void Ui::mainSupport(){
     cout<<"       6. The old amount of type expensed is REPLACE from the apartment with the sum"<<endl;
     cout<<"       7. Print the apartament costs."<<endl;
     cout<<"       8. Print higher expenses than the amount for all apartments"<<endl;
+    cout<<"       9. Print expenses with sum "<<endl;
+    cout<<"       10. Print sum for all expenses with type expense"<<endl;
  
     cout<<"    --------------------------------------------------------------------------"<<endl;
 }
@@ -203,6 +205,28 @@ void Ui::printExpensesWithHigherSum(){
     }
 }
 
+void Ui::printExpensesWithSumAllAp(){
+    unsigned int sum;
+    cout<<"Give the sum";
+    cin>>sum;
+    DynamicVector<Expense> all = this->ctrl.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(sum == ex.getSum())
+            cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
+    }
+}
+
+void Ui::printTotalSumWithTypeEx(){
+    int index;
+    string typee;
+    cout<<"Give the type of spending: ";
+    cin>>typee;
+    index = typeOfExpense(typee);
+    cout<<endl;
+    cout<<this->ctrl.sumAllTypeExpense(index);
+}
+
 void Ui::run(){
     int com;
     bool quit = true;
@@ -249,6 +273,14 @@ void Ui::run(){
                 
             case 8:
                 printExpensesWithHigherSum();
+                break;
+                
+            case 9:
+                printExpensesWithSumAllAp();
+                break;
+            
+            case 10:
+                printTotalSumWithTypeEx();
                 break;
         }
     }

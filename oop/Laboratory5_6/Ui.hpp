@@ -30,6 +30,8 @@ public:
     void replaceSumExpense();
     void printExpenseApartment();
     void printExpensesWithHigherSum();
+    void printExpensesWithSumAllAp();
+    void printTotalSumWithTypeEx();
     void run();
 };
 
