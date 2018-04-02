@@ -28,6 +28,7 @@ public:
     void elimAllSpendingWithOneType();
     int typeOfExpense(string);
     void replaceSumExpense();
+    void printExpenseApartment();
     void run();
 };
 

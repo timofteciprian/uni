@@ -26,6 +26,7 @@ void Ui::mainSupport(){
     cout<<"       4. Eliminating spending on some apartments."<<endl;
     cout<<"       5. Elimination of gas expenses from all apartments."<<endl;
     cout<<"       6. The old amount of type expensed is REPLACE from the apartment with the sum"<<endl;
+    cout<<"       7. Print the apartament costs."<<endl;
  
     cout<<"    --------------------------------------------------------------------------"<<endl;
 }
@@ -173,6 +174,22 @@ void Ui::replaceSumExpense(){
     this->ctrl.replaceSumExpense(no, newSum, com);
 }
 
+void Ui::printExpenseApartment(){
+    int index;
+    unsigned int no,sum, typee;
+    cout<<"Give the number of apartment";
+    cin>>no;
+    index = this->ctrl.findExpenseByNo(no);
+    DynamicVector<Expense> all = this->ctrl.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        sum = ex.getSum();
+        typee = ex.getExpenseType();
+        if(no == ex.getNoApartment())
+            cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " <<ex.getExpenseType()<<endl ;
+    }
+}
+
 void Ui::run(){
     int com;
     bool quit = true;
@@ -211,6 +228,10 @@ void Ui::run(){
                 
             case 6:
                 replaceSumExpense();
+                break;
+                
+            case 7:
+                printExpenseApartment();
                 break;
                 
         }

@@ -25,7 +25,8 @@ public:
     void elimCostsOfApartment(unsigned int, unsigned int, Expense::ExpenseType);
     void elimCostsMoreApartments(int,int*);
     void replaceSumExpense(unsigned int no, unsigned int sum,unsigned int typee);
-    int findExpense(unsigned int no, unsigned int typee);
+    int findExpenseByNoAndSum(unsigned int no, unsigned int typee);
+    int findExpenseByNo(unsigned int no);
 
     
 };

@@ -46,15 +46,25 @@ void Controller::elimCostsMoreApartments(int count, int* array){
 }
 void Controller::replaceSumExpense(unsigned int no, unsigned int newSum,unsigned int typee){
     int index;
-    index = findExpense(no, typee);
+    index = findExpenseByNoAndSum(no, typee);
     this->repo.replaceSumExpense(index, newSum);
 }
 
-int Controller::findExpense(unsigned int no, unsigned int typee){
+int Controller::findExpenseByNoAndSum(unsigned int no, unsigned int typee){
     DynamicVector<Expense> all = this->repo.getAll();
     for(int i=0; i<all.size(); i++){
         Expense ex = all[i];
         if(no == ex.getNoApartment() and typee == ex.getExpenseType())
+            return i;
+    }
+    return -1;
+}
+
+int Controller::findExpenseByNo(unsigned int no){
+    DynamicVector<Expense> all = this->repo.getAll();
+    for( int i=0; i<all.size(); i++){
+        Expense ex =  all[i];
+        if(no == ex.getNoApartment())
             return i;
     }
     return -1;
