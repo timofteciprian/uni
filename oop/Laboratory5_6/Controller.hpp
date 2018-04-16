@@ -18,7 +18,6 @@ private:
     
 public:
     Controller(Repository &repo);
-    //~Controller();
     
     void addExpense(unsigned int no, unsigned int sum, Expense::ExpenseType tip);
     DynamicVector<Expense> &getAll();
@@ -29,7 +28,8 @@ public:
     int findExpenseByNo(unsigned int no);
     int sumAllTypeExpense(int index);
     int sumHighOfApartment(unsigned int no);
-    
+    void orderDescendingForType(int typee);
+    void sortByType();
 };
 
 #endif /* Controller_hpp */

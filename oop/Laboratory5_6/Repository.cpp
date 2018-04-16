@@ -34,6 +34,10 @@ void Repository::replaceSumExpense(int index, unsigned int newSum){
     this->costs[index].setSum(newSum);
 }
 
+void Repository::clearAll(){
+    this->costs.removeAll();
+}
+
 DynamicVector <Expense> operator + (const DynamicVector <Expense> &a, const Expense &b) {
     DynamicVector <Expense> ret = a;
     ret.push_back(b);
