@@ -31,6 +31,7 @@ public:
     void orderDescendingForType(int typee);
     void sortByType();
     void filterByType(int typee);
+    void undo(DynamicVector<Expense> all);
 };
 
 #endif /* Controller_hpp */

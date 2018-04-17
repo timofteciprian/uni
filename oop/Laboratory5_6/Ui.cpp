@@ -106,6 +106,8 @@ void Ui::elimCostsOfApartment(){
     }
 }
 
+
+
 void Ui::allocation(int &size, int* &array){
     int *newarray;
     size *= 2;
@@ -187,6 +189,7 @@ void Ui::printExpenseApartment(){
     cin>>no;
     index = this->ctrl.findExpenseByNo(no);
     DynamicVector<Expense> all = this->ctrl.getAll();
+    cout<<endl;
     for(int i=0; i<all.size(); i++){
         Expense ex = all[i];
         sum = ex.getSum();
@@ -250,6 +253,10 @@ void Ui::orderDescendingForType(){
     this->ctrl.orderDescendingForType(index);
 }
 
+void Ui::undo(DynamicVector<Expense> all){
+    this->ctrl.undo(all);
+}
+
 void Ui::filterByType(){
     int index;
     string typee;
@@ -259,16 +266,23 @@ void Ui::filterByType(){
     this->ctrl.filterByType(index);
 }
 
-
 void Ui::run(){
     int com;
     bool quit = true;
+    bool ok = true;
+    DynamicVector<Expense> alll;
     
     while(quit){
-            
+        printAllCosts();
         mainSupport();
         cout<<"Dati comanda: ";
         cin>>com;
+        
+        if(com != 14)
+            ok = true;
+        if(ok)
+            alll = this->ctrl.getAll();
+        ok=false;
         
         switch(com){
             case 0:
@@ -292,6 +306,7 @@ void Ui::run(){
             case 4:
                 elimCostsMoreApartments();
                 break;
+                
             case 5:
                 elimAllSpendingWithOneType();
                 break;
@@ -326,6 +341,10 @@ void Ui::run(){
                 
             case 13:
                 filterByType();
+                break;
+                
+            case 14:
+                undo(alll);
                 break;
         }
     }

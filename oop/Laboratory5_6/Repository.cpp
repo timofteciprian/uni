@@ -25,7 +25,6 @@ DynamicVector<Expense> &Repository::getAll(){
     return this->costs;
 }
 
-
 void Repository::elimCostsOfApartment(Expense ex){
     this->costs = this->costs - ex;
 }
@@ -41,8 +40,6 @@ void Repository::clearAll(){
 void Repository::changePosition(int a, int b){
     swap(this->costs[a],this->costs[b]);
 }
-
-
 
 DynamicVector <Expense> operator + (const DynamicVector <Expense> &a, const Expense &b) {
     DynamicVector <Expense> ret = a;
@@ -62,20 +59,3 @@ DynamicVector <Expense> operator - (const DynamicVector <Expense> &a, const Expe
     //ret.erase(remove(ret.begin(), ret.end(), b), ret.end());
     return ret;
 }
-
-
-/*
- Repository& Repository::operator=(const Repository &c){
-    if (this == &c){
-        this->sizeList = c.sizeList;
-        this->countList = c.countList;
- 
-        delete[] this->costs;
-        this->costs = new Expense[this->sizeList];
- 
-        for (int i = 0; i < this->countList; i++)
-        this->costs[i] = c.costs[i];
-    }
-    return *this;
- }
- */

@@ -35,6 +35,7 @@ public:
     void printHighSumOfApartment();
     void orderDescendingForType();
     void filterByType();
+    void undo(DynamicVector<Expense>);
     void run();
 };
 

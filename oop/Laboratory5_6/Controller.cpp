@@ -12,7 +12,6 @@
 Controller::Controller(Repository &repo): repo(repo){
 }
 
-
 void Controller::addExpense(unsigned int no, unsigned int sum, Expense::ExpenseType t){
     Expense ex (no,sum,t);
     this->repo.addExpense(ex);
@@ -125,6 +124,14 @@ void Controller::filterByType(int typee){
         Expense ex = all[i];
         if(typee != ex.getExpenseType())
             this->repo.elimCostsOfApartment(ex);
+    }
+}
+
+void Controller::undo(DynamicVector<Expense> all){
+    this->repo.clearAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        this->repo.addExpense(ex);
     }
 }
 

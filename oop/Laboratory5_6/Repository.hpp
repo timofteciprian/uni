@@ -16,7 +16,7 @@
 
 class Repository{
 private:
-        DynamicVector <Expense> costs;
+    DynamicVector <Expense> costs;
     
 public:
     
@@ -26,7 +26,7 @@ public:
     void clearAll();
     void replaceSumExpense(int index, unsigned int sum);
     void changePosition(int a, int b);
-    
+
 };
 DynamicVector <Expense> operator + (const DynamicVector <Expense> &a, const Expense &b);
 DynamicVector <Expense> operator + (const Expense &b, const DynamicVector <Expense> &a);
