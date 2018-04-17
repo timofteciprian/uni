@@ -30,6 +30,7 @@ public:
     int sumHighOfApartment(unsigned int no);
     void orderDescendingForType(int typee);
     void sortByType();
+    void filterByType(int typee);
 };
 
 #endif /* Controller_hpp */

@@ -32,6 +32,7 @@ void Ui::mainSupport(){
     cout<<"       10. Print sum for all expenses with type expense."<<endl;
     cout<<"       11. Print high sum of apartment."<<endl;
     cout<<"       12. Orders descending spending on the type of all apartments."<<endl;
+    cout<<"       13. Remain only expenses on a type"<<endl;
  
     cout<<"   --------------------------------------------------------------------------------------------"<<endl;
 }
@@ -43,7 +44,7 @@ void Ui::addExpense(){
     cin>>no;
     cout<<"Give the amount of the expense: ";
     cin>>sum;
-    cout<<"Give the type of spending (Water, Heat, Electricy, Gas, More): ";
+    cout<<"Give the type of spending (Water, Heat, Electricity, Gas, More): ";
     cin>>typee;
     com = typeOfExpense(typee);
     Expense::ExpenseType expenseTyppe = Expense::ExpenseType::Water;
@@ -53,7 +54,7 @@ void Ui::addExpense(){
         case 1:
             expenseTyppe = Expense::ExpenseType::Heat;      break;
         case 2:
-            expenseTyppe = Expense::ExpenseType::Electricy; break;
+            expenseTyppe = Expense::ExpenseType::Electricity; break;
         case 3:
             expenseTyppe = Expense::ExpenseType::Gas;       break;
         case 4:
@@ -68,7 +69,7 @@ ostream& operator<<(std::ostream& os, Expense::ExpenseType t  )
     {
         case  0: os << "Water";      break;
         case  1: os << "Heat";       break;
-        case  2: os << "Electricy";  break;
+        case  2: os << "Electricity";  break;
         case  3: os << "Gas";        break;
         case  4: os << "More";       break;
         default    : os.setstate(std::ios_base::failbit);
@@ -140,7 +141,7 @@ void Ui::elimCostsMoreApartments(){
 }
 int Ui::typeOfExpense(string typee){
     int com=0;
-    string array[] = {"Water", "Heat", "Electricy", "Gas", "More"};
+    string array[] = {"Water", "Heat", "Electricity", "Gas", "More"};
     for(int i=0; i<5; i++){
         if(array[i] == typee)
             com = i;
@@ -171,7 +172,7 @@ void Ui::replaceSumExpense(){
     string typee;
     cout<<"Give the number of the apartment: ";
     cin>>no;
-    cout<<"Give the type of spending (Water, Heat, Electricy, Gas, More): ";
+    cout<<"Give the type of spending (Water, Heat, Electricity, Gas, More): ";
     cin>>typee;
     cout<<"Give NEW sum of the expense: ";
     cin>>newSum;
@@ -248,7 +249,16 @@ void Ui::orderDescendingForType(){
     index = typeOfExpense(typee);
     this->ctrl.orderDescendingForType(index);
 }
-    
+
+void Ui::filterByType(){
+    int index;
+    string typee;
+    cout<<"Give the type of spending: ";
+    cin>>typee;
+    index = typeOfExpense(typee);
+    this->ctrl.filterByType(index);
+}
+
 
 void Ui::run(){
     int com;
@@ -312,6 +322,10 @@ void Ui::run(){
                 
             case 12:
                 orderDescendingForType();
+                break;
+                
+            case 13:
+                filterByType();
                 break;
         }
     }

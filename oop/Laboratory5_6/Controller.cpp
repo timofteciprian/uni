@@ -119,4 +119,12 @@ void Controller::sortByType(){
     }
 }
 
+void Controller::filterByType(int typee){
+    DynamicVector<Expense> all = this->repo.getAll();
+    for(int i=0; i<all.size(); i++){
+        Expense ex = all[i];
+        if(typee != ex.getExpenseType())
+            this->repo.elimCostsOfApartment(ex);
+    }
+}
 
