@@ -34,6 +34,7 @@ public:
     void printTotalSumWithTypeEx();
     void printHighSumOfApartment();
     void orderDescendingForType();
+    void filterByType();
     void run();
 };
 

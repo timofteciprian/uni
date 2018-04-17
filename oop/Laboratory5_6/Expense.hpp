@@ -20,7 +20,7 @@ public:
     enum ExpenseType {
         Water,
         Heat,
-        Electricy,
+        Electricity,
         Gas,
         More
     };
