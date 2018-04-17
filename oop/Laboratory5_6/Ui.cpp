@@ -18,25 +18,26 @@ Ui::Ui(Controller &ctrl): ctrl(ctrl) {
 
 void Ui::mainSupport(){
     cout<<endl;
-    cout<<"    ----------------------------    Main    ---------------------------------"<<endl;
+    cout<<"    --------------------------------------    Main    ----------------------------------------"<<endl;
     cout<<"       0. Exit."<<endl;
     cout<<"       1. Add the number and the expense of an apartment."<<endl;
     cout<<"       2. Show all costs"<<endl;
     cout<<"       3. Eliminate all the cost of an apartment."<<endl;
     cout<<"       4. Eliminating spending on some apartments."<<endl;
     cout<<"       5. Elimination of gas expenses from all apartments."<<endl;
-    cout<<"       6. The old amount of type expensed is REPLACE from the apartment with the sum"<<endl;
+    cout<<"       6. The old amount of type expensed is REPLACE from the apartment with the sum."<<endl;
     cout<<"       7. Print the apartament costs."<<endl;
-    cout<<"       8. Print higher expenses than the amount for all apartments"<<endl;
-    cout<<"       9. Print expenses with sum "<<endl;
-    cout<<"       10. Print sum for all expenses with type expense"<<endl;
-    cout<<"       11. Print high sum of apartment"<<endl;
+    cout<<"       8. Print higher expenses than the amount for all apartments."<<endl;
+    cout<<"       9. Print expenses with sum. "<<endl;
+    cout<<"       10. Print sum for all expenses with type expense."<<endl;
+    cout<<"       11. Print high sum of apartment."<<endl;
+    cout<<"       12. Orders descending spending on the type of all apartments."<<endl;
  
-    cout<<"    --------------------------------------------------------------------------"<<endl;
+    cout<<"   --------------------------------------------------------------------------------------------"<<endl;
 }
 
 void Ui::addExpense(){
-    unsigned int no, sum, com=0;
+    unsigned int no, sum, com= 0;
     string typee;
     cout<<"Give the number of the apartment: ";
     cin>>no;
@@ -239,6 +240,16 @@ void Ui::printHighSumOfApartment(){
     cout<<"Apartment with the number " << ex.getNoApartment() << " has the high sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
 }
 
+void Ui::orderDescendingForType(){
+    int index;
+    string typee;
+    cout<<"Give the type of spending: ";
+    cin>>typee;
+    index = typeOfExpense(typee);
+    this->ctrl.orderDescendingForType(index);
+}
+    
+
 void Ui::run(){
     int com;
     bool quit = true;
@@ -297,6 +308,10 @@ void Ui::run(){
                 
             case 11:
                 printHighSumOfApartment();
+                break;
+                
+            case 12:
+                orderDescendingForType();
                 break;
         }
     }

@@ -94,13 +94,25 @@ int Controller::sumHighOfApartment(unsigned int no){
     return index;
 }
 
+void Controller::orderDescendingForType(int typee){
+    DynamicVector<Expense> all = this->repo.getAll();
+    for(int i=0; i<all.size()-1; i++){
+        for(int j=i+1; j<all.size(); j++){
+            Expense ex1 = all[i];
+            Expense ex2 = all[j];
+            if(typee == ex1.getExpenseType() and typee == ex2.getExpenseType() and ex1.getSum()<ex2.getSum())
+                this->repo.changePosition(i, j);
+        }
+    }
+}
+
 void Controller::sortByType(){
     Expense::ExpenseType typee;
     DynamicVector<Expense> all = this->repo.getAll();
     this->repo.clearAll();
     for(int i=0; i<5; i++)
         for(int j=0; j<all.size(); j++){
-            Expense ex = all[i];
+            Expense ex = all[j];
             typee = ex.getExpenseType();
             if(typee == i)
                 this->repo.addExpense(ex);

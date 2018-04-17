@@ -35,8 +35,14 @@ void Repository::replaceSumExpense(int index, unsigned int newSum){
 }
 
 void Repository::clearAll(){
-    this->costs.removeAll();
+    this->costs.clear();
 }
+
+void Repository::changePosition(int a, int b){
+    swap(this->costs[a],this->costs[b]);
+}
+
+
 
 DynamicVector <Expense> operator + (const DynamicVector <Expense> &a, const Expense &b) {
     DynamicVector <Expense> ret = a;
@@ -56,7 +62,6 @@ DynamicVector <Expense> operator - (const DynamicVector <Expense> &a, const Expe
     //ret.erase(remove(ret.begin(), ret.end(), b), ret.end());
     return ret;
 }
-
 
 
 /*
