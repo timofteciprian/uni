@@ -80,6 +80,7 @@ public:
         return arr[pos];
     }
     
+
     void clear() {
         capacity = 2;
         length = 0;
