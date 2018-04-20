@@ -14,9 +14,9 @@ void testExpense(){
     Expense::ExpenseType typpe = Expense::ExpenseType::Water;
     
     Expense ex (1,50,typpe);
-    assert(expense.getExpenseType() == 0);
-    assert(expense.getSum() == 50);
-    assert(expense.getNoApartment() == 1);
+    assert(ex.getExpenseType() == 0);
+    assert(ex.getSum() == 50);
+    assert(ex.getNoApartment() == 1);
     
     Expense expense1;
     Expense::ExpenseType typpe1 = Expense::ExpenseType::More;
@@ -29,4 +29,7 @@ void testExpense(){
     
     expense1.setSum(100);
     assert(expense1.getSum() == 100);
+    
+    cout<<"Testele pentru clasa Expense au fost efectuale cu succes\n";
+    
 }
