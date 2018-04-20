@@ -24,14 +24,16 @@ public:
     void elimCostsOfApartment(unsigned int, unsigned int, Expense::ExpenseType);
     void elimCostsMoreApartments(int,int*);
     void replaceSumExpense(unsigned int no, unsigned int sum,unsigned int typee);
-    int findExpenseByNoAndSum(unsigned int no, unsigned int typee);
+    int findExpenseByNoAndType(unsigned int no, unsigned int typee);
     int findExpenseByNo(unsigned int no);
     int sumAllTypeExpense(int index);
     int sumHighOfApartment(unsigned int no);
     void orderDescendingForType(int typee);
     void sortByType();
     void filterByType(int typee);
-    void undo(DynamicVector<Expense> all);
-};
+    void undoSupport(int i);
 
+    void addUndo(int &i);
+};
+DynamicVector <Expense> operator + (const DynamicVector <Expense> &a, const Expense &b);
 #endif /* Controller_hpp */

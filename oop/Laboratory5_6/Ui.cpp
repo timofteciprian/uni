@@ -36,7 +36,11 @@ void Ui::mainSupport(){
  
     cout<<"   --------------------------------------------------------------------------------------------"<<endl;
 }
-
+/*
+ Dscr: Add the number and the expense of an apartment.
+ In: no,sum,com
+ Out:
+ */
 void Ui::addExpense(){
     unsigned int no, sum, com= 0;
     string typee;
@@ -62,7 +66,11 @@ void Ui::addExpense(){
     }
     this->ctrl.addExpense(no, sum, expenseTyppe);
 }
-
+/*
+ Dscr: operator cin
+ In:
+ Out:
+ */
 ostream& operator<<(std::ostream& os, Expense::ExpenseType t  )
 {
     switch(t)
@@ -76,11 +84,19 @@ ostream& operator<<(std::ostream& os, Expense::ExpenseType t  )
     }
     return os;
 }
-
+/*
+ Dscr: Print one expense
+ In:-
+ Out:no,sum,type
+ */
 void Ui::printOneExpense(Expense e){
     cout<<"Apartment with the number " << e.getNoApartment() << " has the sum of "<< e.getSum() << " for expense " << e.getExpenseType() << endl ;
 }
-
+/*
+ Dscr: Print all expense
+ In:-
+ Out:
+ */
 void Ui::printAllCosts(){
     DynamicVector<Expense> all = this->ctrl.getAll();
     for (int i=0; i<all.size(); i++){
@@ -89,7 +105,11 @@ void Ui::printAllCosts(){
     }
     
 }
-
+/*
+Dscr: Eliminate costs of apartament
+In: no, sum
+Out: expense
+ */
 void Ui::elimCostsOfApartment(){
     int no, sum;
     Expense::ExpenseType typpe;
@@ -105,9 +125,11 @@ void Ui::elimCostsOfApartment(){
         }
     }
 }
-
-
-
+/*
+ Dscr: Memory allocation for an array
+ In:
+ Out:
+ */
 void Ui::allocation(int &size, int* &array){
     int *newarray;
     size *= 2;
@@ -117,7 +139,11 @@ void Ui::allocation(int &size, int* &array){
     delete [] array;
     array = newarray;
 }
-
+/*
+ Dscr: Eliminate costs more apartments
+ In: list (apartments to be removed)
+ Out:
+ */
 void Ui::elimCostsMoreApartments(){
     int size,count, *array, no;
     count=0;
@@ -141,6 +167,11 @@ void Ui::elimCostsMoreApartments(){
     this->ctrl.elimCostsMoreApartments(count,array);
     delete[] array;
 }
+/*
+ Dscr: Searches for the place of an expense in the list
+ In:   list(types)
+ Out:
+ */
 int Ui::typeOfExpense(string typee){
     int com=0;
     string array[] = {"Water", "Heat", "Electricity", "Gas", "More"};
@@ -150,6 +181,11 @@ int Ui::typeOfExpense(string typee){
     }
     return com;
 }
+/*
+ Dscr: Eliminate all expenses for on type
+ In: type
+ Out:
+ */
 void Ui::elimAllSpendingWithOneType(){
     int no, sum, com=0;
     string typee;
@@ -168,7 +204,11 @@ void Ui::elimAllSpendingWithOneType(){
         }
     }
 }
-
+/*
+ Dscr:Replace sum expense
+ In: no, sum, type, new sum
+ Out:
+ */
 void Ui::replaceSumExpense(){
     unsigned int no, newSum, com=0;
     string typee;
@@ -181,7 +221,11 @@ void Ui::replaceSumExpense(){
     com = typeOfExpense(typee);
     this->ctrl.replaceSumExpense(no, newSum, com);
 }
-
+/*
+ Dscr:Print all expenses for one apartments
+ In: no (apartment)
+ Out: all expenses
+ */
 void Ui::printExpenseApartment(){
     int index;
     unsigned int no,sum, typee;
@@ -198,7 +242,11 @@ void Ui::printExpenseApartment(){
             cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " <<ex.getExpenseType()<<endl;
     }
 }
-
+/*
+ Dscr: Print expense with higher sum
+ In: value
+ Out:
+ */
 void Ui::printExpensesWithHigherSum(){
     unsigned int newSum;
     cout<<"Give the higher value";
@@ -210,7 +258,11 @@ void Ui::printExpensesWithHigherSum(){
             cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
     }
 }
-
+/*
+ Dscr: Print expenses with sum
+ In: sum
+ Out:
+ */
 void Ui::printExpensesWithSumAllAp(){
     unsigned int sum;
     cout<<"Give the sum";
@@ -222,7 +274,11 @@ void Ui::printExpensesWithSumAllAp(){
             cout<<"Apartment with the number " << ex.getNoApartment() << " has the sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
     }
 }
-
+/*
+ Dscr: Print total sum eith type expense
+ In: type expense
+ Out:
+ */
 void Ui::printTotalSumWithTypeEx(){
     int index;
     string typee;
@@ -232,7 +288,11 @@ void Ui::printTotalSumWithTypeEx(){
     cout<<endl;
     cout<<this->ctrl.sumAllTypeExpense(index);
 }
-
+/*
+ Dscr: Print high sum of apartemnt
+ In: no (apartment)
+ Out:
+ */
 void Ui::printHighSumOfApartment(){
     unsigned int no;
     int index;
@@ -243,7 +303,11 @@ void Ui::printHighSumOfApartment(){
     Expense ex = all[index];
     cout<<"Apartment with the number " << ex.getNoApartment() << " has the high sum of "<< ex.getSum() << " for expense " << ex.getExpenseType()<<endl;
 }
-
+/*
+ Dscr: Order descending for expense type
+ In: type(expense)
+ Out:
+ */
 void Ui::orderDescendingForType(){
     int index;
     string typee;
@@ -252,11 +316,21 @@ void Ui::orderDescendingForType(){
     index = typeOfExpense(typee);
     this->ctrl.orderDescendingForType(index);
 }
-
+/*
+ Dscr: Restore the last operation
+ In:
+ Out:
+ */
+/*
 void Ui::undo(DynamicVector<Expense> all){
     this->ctrl.undo(all);
 }
-
+ */
+/*
+ Dscr: Only spends on a type
+ In: type
+ Out:
+ */
 void Ui::filterByType(){
     int index;
     string typee;
@@ -265,9 +339,13 @@ void Ui::filterByType(){
     index = typeOfExpense(typee);
     this->ctrl.filterByType(index);
 }
-
+/*
+ Dscr: All other functions are called
+ In:
+ Out:
+ */
 void Ui::run(){
-    int com;
+    int com, i=0;
     bool quit = true;
     bool ok = true;
     DynamicVector<Expense> alll;
@@ -280,9 +358,12 @@ void Ui::run(){
         
         if(com != 14)
             ok = true;
+        
         if(ok)
-            alll = this->ctrl.getAll();
+            this->ctrl.addUndo(i);
         ok=false;
+        
+       
         
         switch(com){
             case 0:
@@ -344,7 +425,8 @@ void Ui::run(){
                 break;
                 
             case 14:
-                undo(alll);
+                this->ctrl.undoSupport(i-1);
+                i--;
                 break;
         }
     }

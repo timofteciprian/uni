@@ -11,22 +11,38 @@
 
 Controller::Controller(Repository &repo): repo(repo){
 }
-
+/*
+ decr: Add expense
+ in: no, sum, type
+ out:
+ */
 void Controller::addExpense(unsigned int no, unsigned int sum, Expense::ExpenseType t){
     Expense ex (no,sum,t);
     this->repo.addExpense(ex);
 }
-
+/*
+ decr: Get all expenses
+ in:
+ out: list
+ */
 DynamicVector<Expense> &Controller::getAll(){
     return this->repo.getAll();
 }
-
+/*
+ decr: Eliminate cost of apartment
+ in: no, sum, type
+ out:
+ */
 
 void Controller::elimCostsOfApartment(unsigned int no, unsigned int sum, Expense::ExpenseType typpe){
     Expense ex (no,sum, typpe);
     this->repo.elimCostsOfApartment(ex);
 }
-
+/*
+ decr: Eliminate costs more apartments
+ in: list(apartments) count (length of the list)
+ out:
+ */
 void Controller::elimCostsMoreApartments(int count, int* array){
     int no,sum;
     Expense::ExpenseType typpe;
@@ -43,13 +59,22 @@ void Controller::elimCostsMoreApartments(int count, int* array){
         }
     }
 }
+/*
+ decr: Replace sum for expense
+ in: no, type, new sum
+ out:
+ */
 void Controller::replaceSumExpense(unsigned int no, unsigned int newSum,unsigned int typee){
     int index;
-    index = findExpenseByNoAndSum(no, typee);
+    index = findExpenseByNoAndType(no, typee);
     this->repo.replaceSumExpense(index, newSum);
 }
-
-int Controller::findExpenseByNoAndSum(unsigned int no, unsigned int typee){
+/*
+ decr: Find expense by no and type of expense
+ in: no,  type
+ out:
+ */
+int Controller::findExpenseByNoAndType(unsigned int no, unsigned int typee){
     DynamicVector<Expense> all = this->repo.getAll();
     for(int i=0; i<all.size(); i++){
         Expense ex = all[i];
@@ -58,7 +83,11 @@ int Controller::findExpenseByNoAndSum(unsigned int no, unsigned int typee){
     }
     return -1;
 }
-
+/*
+ decr: Find expense by no
+ in: no
+ out: index expense by list
+ */
 int Controller::findExpenseByNo(unsigned int no){
     DynamicVector<Expense> all = this->repo.getAll();
     for( int i=0; i<all.size(); i++){
@@ -68,7 +97,11 @@ int Controller::findExpenseByNo(unsigned int no){
     }
     return -1;
 }
-
+/*
+ decr: Sum all type expenses
+ in: type
+ out:
+ */
 int Controller::sumAllTypeExpense(int typee){
     int sum = 0;
     DynamicVector<Expense> all = this->repo.getAll();
@@ -79,7 +112,11 @@ int Controller::sumAllTypeExpense(int typee){
     }
     return sum;
 }
-
+/*
+ decr: Sum high of apartment
+ in: no (apartment)
+ out: index
+ */
 int Controller::sumHighOfApartment(unsigned int no){
     int sum = 0, index = -1;
     DynamicVector<Expense> all = this->repo.getAll();
@@ -92,7 +129,11 @@ int Controller::sumHighOfApartment(unsigned int no){
     }
     return index;
 }
-
+/*
+ decr: Order descending for type
+ in: type
+ out:
+ */
 void Controller::orderDescendingForType(int typee){
     DynamicVector<Expense> all = this->repo.getAll();
     for(int i=0; i<all.size()-1; i++){
@@ -104,7 +145,11 @@ void Controller::orderDescendingForType(int typee){
         }
     }
 }
-
+/*
+ decr: sort expenses by all type
+ in:
+ out:
+ */
 void Controller::sortByType(){
     Expense::ExpenseType typee;
     DynamicVector<Expense> all = this->repo.getAll();
@@ -117,7 +162,11 @@ void Controller::sortByType(){
                 this->repo.addExpense(ex);
     }
 }
-
+/*
+ decr: Filter expense by type
+ in: type
+ out:
+ */
 void Controller::filterByType(int typee){
     DynamicVector<Expense> all = this->repo.getAll();
     for(int i=0; i<all.size(); i++){
@@ -126,12 +175,38 @@ void Controller::filterByType(int typee){
             this->repo.elimCostsOfApartment(ex);
     }
 }
+/*
+ decr: Structure undo
+ in:
+ out:
+ */
 
-void Controller::undo(DynamicVector<Expense> all){
+struct undo{
+    DynamicVector<Expense> all;
+}undo[100];
+
+/*
+ decr: Adds the list of objects in structure Undo
+ in: i
+ out: i (new i)
+ */
+void Controller::addUndo(int &i){
+    undo[i].all = this->repo.getAll();
+    i++;
+}
+/*
+ decr: adds the list of items from the undo list
+ in: index
+ out:
+ */
+void Controller::undoSupport(int i){
+    DynamicVector<Expense> all = undo[i].all;
     this->repo.clearAll();
     for(int i=0; i<all.size(); i++){
         Expense ex = all[i];
         this->repo.addExpense(ex);
     }
 }
+
+
 
