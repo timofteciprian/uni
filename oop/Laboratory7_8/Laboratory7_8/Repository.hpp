@@ -10,32 +10,46 @@
 #define Repository_hpp
 
 #include <stdio.h>
-
 #include "Account.hpp"
 #include <vector>
 #include <iostream>
 #include <string>
 
-using namespace std;
 
+template <class T>
 class Repository {
 public:
-    Repository(const vector<Account> &accounts);
+    vector<T> getAccounts();
     
-    Repository();
-    
-    virtual ~Repository();
-    
-    const vector<Account> &getAccounts() const;
-    
-    void addElem(Account);
-    void deleteElem(unsigned int);
-    void update(unsigned int, Account);
-    void populate();
+    void addElem(T element);
+    void deleteElem(unsigned int index);
+    void update(unsigned int index, T element);
     
 private:
-    vector<Account> accounts;
+    vector<T> accounts;
 };
+
+
+template <class T>
+vector<T> Repository<T>::getAccounts() {
+    return this->accounts;
+}
+
+template <class T>
+void Repository<T>::update(unsigned int index, T c) {
+    this->accounts[index]=c;
+}
+
+template <class T>
+void Repository<T>::deleteElem(unsigned int index) {
+    this->accounts.erase(this->accounts.begin()+index);
+}
+
+template <class T>
+void Repository<T>::addElem(T c) {
+    this->accounts.push_back(c);
+}
+
 
 
 #endif /* Repository_hpp */

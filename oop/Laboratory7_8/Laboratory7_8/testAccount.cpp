@@ -12,9 +12,17 @@
 #include <string>
 #include <assert.h>
 
-using namespace std;
 
-void testAccount() {
+TestAccount::TestAccount()
+{
+    
+}
+
+TestAccount::~TestAccount() {
+    
+}
+
+void TestAccount::runTests() {
     Account c1 = Account();
     assert(c1.getPin() == 0);
     assert(c1.getName() == "");
@@ -33,7 +41,5 @@ void testAccount() {
     c2.setName("Andrei");
     assert(c2.getName() == "Andrei");
     
-    
     cout << "tests passed successfully"<<endl;
-    
 }

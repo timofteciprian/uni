@@ -26,9 +26,9 @@ public:
     
     virtual ~Account();
     
-    const string &getName() const;
+    const string getName() const;
     
-    const string &getIdCard() const;
+    const string getIdCard() const;
     
     unsigned int getPin() const;
     
@@ -42,7 +42,7 @@ private:
     string name;
     string idCard;
     unsigned int pin;
-
+    
 };
 
 #endif /* Account_hpp */

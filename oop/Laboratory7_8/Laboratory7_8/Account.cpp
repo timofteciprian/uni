@@ -8,38 +8,44 @@
 
 #include "Account.hpp"
 
-Account::Account(unsigned int pin) : pin(pin) {pin=0;}
+Account::Account(unsigned int pin) {
+    this->pin = pin;
+}
+
+Account::Account() {
+    this->pin = 0;
+}
 
 Account::~Account() {
     
 }
 
-const string &Account::getName() const {
-    return name;
+const string Account::getName() const {
+    return this->name;
 }
 
-const string &Account::getIdCard() const {
-    return idCard;
+const string Account::getIdCard() const {
+    return this->idCard;
 }
 
 unsigned int Account::getPin() const {
-    return pin;
+    return this->pin;
 }
 
 void Account::setName(const string &name) {
-    Account::name = name;
+    this->name = name;
 }
 
 void Account::setIdCard(const string &idCard) {
-    Account::idCard = idCard;
+    this->idCard = idCard;
 }
 
 void Account::setPin(unsigned int pin) {
-    Account::pin = pin;
+    this->pin = pin;
 }
 
-Account::Account(const string &name, const string &idCard, unsigned int pin) : name(name), idCard(idCard), pin(pin) {}
-
-Account::Account() {
-    Account::pin = 0;
+Account::Account(const string &name, const string &idCard, unsigned int pin) {
+    this->name = name;
+    this->idCard = idCard;
+    this->pin = pin;
 }

@@ -11,6 +11,16 @@
 
 #include <stdio.h>
 
-void testRepository();
+#include "Account.hpp"
+#include "Repository.hpp"
+
+class TestRepo
+{
+public:
+    TestRepo();
+    ~TestRepo();
+    
+    void runTests();
+};
 
 #endif /* testRepository_hpp */
