@@ -12,27 +12,17 @@
 #include <string>
 #include <assert.h>
 
-
-TestAccount::TestAccount()
-{
-    
-}
-
-TestAccount::~TestAccount() {
-    
-}
-
-void TestAccount::runTests() {
+void testAccount() {
     Account c1 = Account();
     assert(c1.getPin() == 0);
     assert(c1.getName() == "");
-    assert(c1.getIdCard() == "");
+    assert(c1.getId() == "");
     
     string name="Dorel";
     
     Account c2(name,"19854563652",1234);
     assert(c2.getName() == "Dorel");
-    assert(c2.getIdCard() == "19854563652");
+    assert(c2.getId() == "19854563652");
     assert(c2.getPin() == 1234);
     
     c2.setPin(1010);

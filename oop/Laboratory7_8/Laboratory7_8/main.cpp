@@ -1,31 +1,30 @@
 //
 //  main.cpp
-//  Laboratory7_8
+//  Lab78
 //
-//  Created by Timofte Ciprian Andrei on 19/04/2018.
+//  Created by Timofte Ciprian Andrei on 26/04/2018.
 //  Copyright © 2018 Timofte Ciprian Andrei. All rights reserved.
 //
-
 #include <iostream>
 #include "testAccount.hpp"
 #include "testRepository.hpp"
-#include <iostream>
-#include "Repository.hpp"
+#include "testRepoT.hpp"
+#include "Account.hpp"
+#include "RepoT.hpp"
+#include "RepoFile.hpp"
+#include "Controller.hpp"
+#include "Ui.hpp"
+#include "testRepoFile.hpp"
 
-using namespace std;
 
 int main(int argc, const char * argv[]) {
-    TestAccount accountTester = TestAccount();
-    accountTester.runTests();
     
-    TestRepo repoTester = TestRepo();
-    repoTester.runTests();
-    
-    Repository<int> repo;
-    vector<int> acc = repo.getAccounts();
-    acc.push_back(25);
-    
-    cout << acc.front();
-    
+    testAccount();
+    testRepoT();
+    testRepoFile();
+    RepoFile repo("test.txt");
+    Controller ctrl(repo);
+    Ui Ui(ctrl);
+    Ui.run();
     return 0;
 }

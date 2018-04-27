@@ -1,6 +1,6 @@
 //
 //  Ui.hpp
-//  Laboratory7_8
+//  Lab78
 //
 //  Created by Timofte Ciprian Andrei on 26/04/2018.
 //  Copyright © 2018 Timofte Ciprian Andrei. All rights reserved.
@@ -9,20 +9,30 @@
 #ifndef Ui_hpp
 #define Ui_hpp
 
-#include "Repository.hpp"
 #include <stdio.h>
 
-class Ui{
-private:
-    Repository<Account> &repo;
+#include "Controller.hpp"
+
+class Ui {
 public:
-    Ui(Repository<Account> &repo);
+    Ui();
     
-    void mainSupport();
-    bool logIn();
+    Ui(const Controller &ctrl);
     
     void run();
+    
+private:
+    Controller ctrl;
+    void printMenu();
+    void gimmeMoney();
+    
+    void addCont();
+    
+    void printClineti();
+    void retragereNumerar();
+    void adaugareNumerar();
+    void verificareSoldATM();
+    
 };
-
 
 #endif /* Ui_hpp */

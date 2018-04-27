@@ -11,13 +11,6 @@
 
 #include <stdio.h>
 
-
-class TestAccount
-{
-public:
-    TestAccount();
-    ~TestAccount();
-    void runTests();
-};
+void testAccount();
 
 #endif /* testAccount_hpp */
