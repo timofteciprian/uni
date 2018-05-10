@@ -14,87 +14,100 @@
 using namespace std;
 
 Resource::Resource(){
-    this->name = NULL;
-    this->dateEntry = 0;
-    this->value = 0;
- 
+    name = {};
+    dateEntry = 0;
+    value = 0;
+    
 }
 
-Resource::Resource(char* name, unsigned int dateEntry, int value){
-    this->name = new char[strlen(name)+1];
-    strcpy(this->name, name);
-    //this->name = name;
-    this->dateEntry = dateEntry;
-    this->value = value;
- 
+/*Resource* Resource::clone(){
+ Resource* newResource;
+ newResource = new Resource();
+ newResource->setName(this->name);
+ newResource->setDateEntry(this->dateEntry);
+ newResource->setValue(this->value);
+ return newResource;
+ }*/
+Resource::Resource(Resource &m){
+    name = m.name ;
+    dateEntry = m.dateEntry;
+    value = m.value;
 }
-
-//Resource::Resource(Resource &m){
-//    //this->name = new char[strlen(m.name)+1];
-//    strcpy(this->name, m.name);
-//    //this->name = m.name;
-//    this->dateEntry = m.dateEntry;
-//    this->value = m.value;
-//}
 
 Resource::~Resource(){
 }
 
-char* Resource::getName(){
-    return this->name;
+string Resource::getName(){
+    return name;
 }
-void Resource::setName(char* name){
-    this->name = new char[strlen(name)+1];
-    strcpy(this->name, name);
-    //this->name = name;
+void Resource::setName(string n){
+    name = n;
 }
 
 unsigned int Resource::getDateEntry(){
-    return this->dateEntry;
+    return dateEntry;
 }
-void Resource::setDateEntry(unsigned int dateEntry){
-    this->dateEntry = dateEntry;
+void Resource::setDateEntry(unsigned int dateE){
+    dateEntry = dateE;
 }
 
 int Resource::getValue(){
-    return this->value;
+    return value;
 }
-void Resource::setValue(int value){
-    this->value = value;
+void Resource::setValue(int val){
+    value = val;
 }
-istream& operator>> (istream &input, Resource &m) {
-    char* name = new char[20];
-    input >> name;
-    m.name = name;
-    input >> m.dateEntry;
-    input >> m.value;
-    
-    return input/*input >> m.name >> m.dateEntry >> m.value >> m.lifeTime >> m.no*/;
+istream& operator>>( istream& input, Resource *r ) {
+    r->read(input);
+    return input ;
 }
 
+void Resource::read(istream& input){
+    input >> name;
+    input >> dateEntry;
+    input >> value;
+}
+
+ostream& operator<<( ostream& output, Resource* r ){
+    r->write(output);
+    return output;
+}
+
+void Resource::write(ostream &output){
+    output << "Name: " << name << endl;
+    output << "Date: " << dateEntry << endl;
+    output << "Value: " << value << endl;
+}
 
 Resource& Resource::operator=(const Resource &r) {
     if (this != &r){
-        this->name = new char[100];
-        strcpy(this->name, r.name);
-        this->dateEntry = r.dateEntry;
-        this->value = r.value;
+        name = r.name;
+        dateEntry = r.dateEntry;
+        value = r.value;
     }
     return *this;
 }
-//
-//ostream& operator<< (ostream &output, Resource &m) {
-//    output << "Name: " << m.name << endl;
-//    output << "Date: " << m.dateEntry << endl;
-//    output << "Value: " << m.value << endl;
-//    output << "Life Time: " << m.lifeTime << endl;
-//    output << "No: " << m.no << endl;
-//    return output;
+
+
+////istream& operator>>(istream &is, Flower &f){
+//    char* s = new char[100];
+//    is >> s;
+//    char *next_token;
+//    char* aux = strtok_s(s, ";", &next_token);
+//    f.name = new char[strlen(aux) + 1];
+//    strcpy_s(f.name, strlen(aux) + 1, aux);
+//    aux = strtok_s(NULL, ";", &next_token);
+//    f.price = atoi(aux);
+//    return is;
 //}
-//
+//ostream& operator<<(ostream &os, Resource &r){
+//    os << "Name " << r.name << endl;
+//    os << " Date: " << r.dateEntry << endl;
+//    os << " Value: " << r.value << endl;
+//    return os;
+//}
 
 
-
-
-
+//ostream& operator<<( ostream& output, Resource &r ) {
+//    return  output << "Name: " <<  r.name << endl << " Date: " << r.dateEntry<< endl << " Value: " << r.value << endl; }
 
