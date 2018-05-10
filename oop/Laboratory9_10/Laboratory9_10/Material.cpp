@@ -12,69 +12,93 @@
 
 using namespace std;
 
-Material::Material(){
-    this->name = {};
-    this->dateEntry = 0;
-    this->value = 0;
-    this->lifeTime = 0;
-    this->no = 0;
+Material::Material():Resource(){
+    lifeTime = 0;
+    no = 0;
 }
 
-Material::Material(string name, unsigned int dateEntry, int value, int lifeTime, int no){
-    this->name = name;
-    this->dateEntry = dateEntry;
-    this->value = value;
-    this->lifeTime = lifeTime;
-    this->no = no;
-}
+//Material::Material(string name, unsigned int dateEntry, int value, int lifeTime, int no):Resource(name, dateEntry, value){
+//    this->lifeTime = lifeTime;
+//    this->no = no;
+//}
 
-Material::Material(Material &m){
-    this->name = m.name;
-    this->dateEntry = m.dateEntry;
-    this->value = m.value;
-    this->lifeTime = m.lifeTime;
-    this->no = m.no;
+Material::Material(Material &m):Resource(m){
+    lifeTime = m.lifeTime;
+    no = m.no;
 }
 
 Material::~Material(){
 }
 
-string Material::getName(){
-    return this->name;
-}
-void Material::setName(string name){
-    this->name = name;
-}
-
-unsigned int Material::getDateEntry(){
-    return this->dateEntry;
-}
-void Material::setDateEntry(unsigned int dateEntry){
-    this->dateEntry = dateEntry;
-}
-
-int Material::getValue(){
-    return this->value;
-}
-void Material::setValue(int value){
-    this->value = value;
-}
-
 int Material::getLifeTime(){
-    return this->lifeTime;
+    return lifeTime;
 }
-void Material::setLifeTime(int lifeTime){
-    this->lifeTime = lifeTime;
+void Material::setLifeTime(int lifeT){
+    lifeTime = lifeT;
 }
 
 int Material::getNo(){
-    return this->no;
+    return no;
 }
-void Material::setNo(int no){
-    this->no = no;
+void Material::setNo(int n){
+    no = n;
 }
 
+//istream& operator>>( istream& input, Material *m ) {
+//    m->read(input);
+//    return input ;
+//}
+void Material::read(istream &input){
+    //input >> static_cast<Resource*>();
+    string name;
+    unsigned int dateEntry;
+    int value;
+    input >> name;
+    setName(name);
+    input >>dateEntry;
+    setDateEntry(dateEntry);
+    input >>value;
+    setValue(value);
+    input >> lifeTime;
+    input >> no;
+}
 
+//ostream& operator <<(ostream& output,const Material *m){
+//    m->write(output);
+//    return output;
+//}
 
+void Material::write(ostream &output){
+    //output << static_cast<const Resource*>(m);
+    output << "Name: " << getName() << endl;
+    output << "Date: "<< getDateEntry() << endl;
+    output << "Value: " << getValue() <<endl;
+    output << "Life Time: " << lifeTime << endl;
+    output << "No: "<<  no << endl ;
+}
 
+Material& Material::operator=(const Material &m) {
+    if (this != &m){
+        Resource::operator=(m);
+        lifeTime = m.lifeTime;
+        no = m.no;
+    }
+    return *this;
+}
+
+Resource* Material::clone(){
+    Material* newMaterial = new Material();
+    newMaterial->setName(name);
+    newMaterial->setDateEntry(dateEntry);
+    newMaterial->setValue(value);
+    newMaterial->lifeTime = lifeTime;
+    newMaterial->no = no;
+    return newMaterial;
+}
+
+string Material::toString(){
+    stringstream ss;
+    ss<<"Resource material: "<< this->name <<", "<< this->dateEntry <<", "<< this->value <<", "<< this->lifeTime <<", "<< this->no<<endl;
+    return ss.str();
+}
 

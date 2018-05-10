@@ -12,25 +12,25 @@
 #include <stdio.h>
 #include<iostream>
 #include <string>
+#include <sstream>
+#include "Resource.hpp"
 
 using namespace std;
 
-class Material{
+class Material : public Resource {
+private:
+    
+    int lifeTime;
+    int no;
+    
 public:
     
     Material();
-    Material(string name, unsigned int dateEntry, int value, int lifeTime, int no);
+    //Material(string name, unsigned int dateEntry, int value, int lifeTime, int no);
     Material(Material &m);
     ~Material();
     
-    string getName();
-    void setName(string name);
-    
-    unsigned int getDateEntry();
-    void setDateEntry(unsigned int dateEntry);
-    
-    int getValue();
-    void setValue(int value);
+    Resource* clone()override;
     
     int getLifeTime();
     void setLifeTime(int lifeTime);
@@ -38,12 +38,18 @@ public:
     int getNo();
     void setNo(int no);
     
-private:
-    string name;
-    unsigned int dateEntry;
-    int value;
-    int lifeTime;
-    int no;
+    virtual void read(istream& input)override;
+    virtual void write(ostream& output)override;
+    
+    
+    //    bool operator==(const Material &m) const{
+    //        return this->lifeTime == m.lifeTime and this->no == m.no;
+    //    }
+    
+    Material& operator=(const Material &m);
+    string toString()override;
+    
 };
+
 
 #endif /* Material_hpp */
