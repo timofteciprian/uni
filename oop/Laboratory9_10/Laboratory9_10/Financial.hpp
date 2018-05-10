@@ -9,37 +9,57 @@
 #ifndef Financial_hpp
 #define Financial_hpp
 
+#include"Resource.hpp"
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
-class Financial{
+class Financial : public Resource {
+private:
+    string coin;
+    
 public:
     Financial();
-    Financial(string name, unsigned int dateEntry, int value, string coin);
+    //Financial(string name, unsigned int dateEntry, int value, string coin);
     Financial(Financial & f);
     ~Financial();
     
-    string getName();
-    void setName(string name);
-    
-    unsigned int getDateEntry();
-    void setDateEntry(unsigned int dateEntry);
-    
-    int getValue();
-    void setValue(int value);
+    Resource* clone()override;
     
     string getCoin();
     void setCoin(string coin);
     
-private:
-    string name;
-    unsigned int dateEntry;
-    int value;
-    string coin;
+    virtual void read(istream& input)override;
+    virtual void write(ostream& output)override;
     
+    
+    //friend istream& operator>> ( istream& input, Financial* f );
+    //friend ostream& operator <<(ostream& output,const Financial *f);
+    
+    //
+    //    virtual istream& read(istream& input ) override {
+    //        Resource::read(input);
+    //        string coin;
+    //        input >> coin;
+    //        this->coin = coin;
+    //        return input ;
+    //    }
+    
+    //    //    virtual ostream& write( ostream& output ) const override
+    //    //    { return Resource::write(output) << " Coin: " << coin << endl ; }
+    //    //
+    //
+    //    bool operator==(const Financial &f) const{
+    //        return this->coin == f.coin;
+    //    }
+    //
+    //    Financial& operator=(const Financial &f);
+    //
+    //
+    string toString()override;
 };
 
 
