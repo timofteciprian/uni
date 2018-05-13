@@ -88,8 +88,8 @@ void Repository::writeToFile(const string fileName){
 }
 
 
-Resource* Repository::getAll(){
-    return *elements;
+Resource** Repository::getAll(){
+    return elements;
 }
 int Repository::getSize(){
     return size;

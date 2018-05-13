@@ -36,7 +36,7 @@ public:
     
     //    int search(T elem);
     //    int getPoz(T elem);
-    Resource* getAll();
+    Resource** getAll();
     //    T getElement(int poz);
     int getSize();
     // Material* getMaterial();

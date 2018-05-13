@@ -48,13 +48,13 @@ bool Ui::login(){
 }
 
 void Ui::printAllResources(){
-    Resource* resF = ctrl.getFinancial();
+    Resource** resF = ctrl.getFinancial();
     for(int i=0; i<ctrl.getSizeRepo(); i++ ){
-        cout << resF[i].toString();
+        cout << resF[i]->toString();
     }
-    Resource* resM = ctrl.getMaterial();
+    Resource** resM = ctrl.getMaterial();
     for(int i=0; i<ctrl.getSizeRepo(); i++ ){
-        cout << resM[i].toString();
+        cout << resM[i]->toString();
     }
 }
 
@@ -62,14 +62,31 @@ void Ui::mainOperations(){
     cout<<endl;
     cout<<"    --------------------------------------    Main Operations    ----------------------------------------"<<endl;
     cout<<"       0. Exit."<<endl;
-    cout<<"       1. Search for a specific resource (by name or after the date you entered the company)."<<endl;
+    cout<<"       1. Search for a specific resource (by name or after the date entered the company)."<<endl;
     cout<<"       2. Modify a specific resource."<<endl;
     cout<<"   ------------------------------------------------------------------------------------------------------"<<endl;
     
 }
 
 void Ui::searchSpecificResource(){
+    int com;
+    cout<< "1. By name."<<endl;
+    cout<< "2. By the date entered the company"<<endl;
+    cout<< "Give the order: ";
+    cin>>com;
     
+    int listIndex[20], size=0;
+    if(com == 1){
+        string name;
+        cout<<"Give the name: ";
+        cin>>name;
+        ctrl.searchSpecificMaterialByName(name, listIndex, size);
+        ctrl.searchSpecificFinancialByName(name, listIndex, size);
+    }
+    else
+        if(com == 2){
+            
+        }
 }
 void Ui::run(){
     int com;
@@ -79,7 +96,7 @@ void Ui::run(){
     while(quit){
         
         mainSupport();
-        cout<<"Dati comanda: ";
+        cout<<"Give the order: ";
         cin>>com;
         
         switch(com){
@@ -93,6 +110,18 @@ void Ui::run(){
                 if(login()){
                     cout<<"Login successfully"<<endl;
                     mainOperations();
+                    int comOp;
+                    cout<<"Give the order: "<<endl;
+                    cin>>comOp;
+                    
+                    switch (comOp) {
+                        case 1:
+                            searchSpecificResource();
+                            break;
+                            
+                        default:
+                            break;
+                    }
                     break;
                     
                 }
