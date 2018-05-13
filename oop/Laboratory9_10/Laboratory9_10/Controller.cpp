@@ -32,7 +32,7 @@ int Controller::getSizeRepo(){
     return repoF.getSize();
 }
 
-void Controller::searchSpecificMaterialByName(string name , int listIndex[], int &size){
+void Controller::searchSpecificMaterialByName(string name){
     Resource ** elements = repoM.getAll();
     for(int i=0; i<repoM.getSize(); i++){
         if(elements[i]->getName() == name){
@@ -41,7 +41,7 @@ void Controller::searchSpecificMaterialByName(string name , int listIndex[], int
         }
     }
 }
-void Controller::searchSpecificFinancialByName(string name , int listIndex[], int &size){
+void Controller::searchSpecificFinancialByName(string name){
     Resource ** elements = repoF.getAll();
     for(int i=0; i<repoF.getSize(); i++){
         if(elements[i]->getName() == name){
@@ -49,6 +49,10 @@ void Controller::searchSpecificFinancialByName(string name , int listIndex[], in
             repoF.writeToFile("write.txt");
         }
     }
+}
+
+void Controller::searchSpecificMaterialByDate(unsigned int date){
+    
 }
 
 

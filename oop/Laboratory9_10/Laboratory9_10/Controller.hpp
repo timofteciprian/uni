@@ -31,9 +31,10 @@ public:
     Resource** getMaterial();
     Resource** getFinancial();
     
-    void searchSpecificMaterialByName(string name, int listIndex[], int &size);
-    void searchSpecificFinancialByName(string name, int listIndex[], int &size);
-    int searchSpecificResourceByDate(unsigned int date);
+    void searchSpecificMaterialByName(string name);
+    void searchSpecificFinancialByName(string name);
+    void searchSpecificMaterialByDate(unsigned int date);
+    void searchSpecificFinancialByDate(unsigned int date);
     int getSizeRepo();
     
     

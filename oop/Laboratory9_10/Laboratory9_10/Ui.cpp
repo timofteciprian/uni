@@ -74,17 +74,18 @@ void Ui::searchSpecificResource(){
     cout<< "2. By the date entered the company"<<endl;
     cout<< "Give the order: ";
     cin>>com;
-    
-    int listIndex[20], size=0;
     if(com == 1){
         string name;
         cout<<"Give the name: ";
         cin>>name;
-        ctrl.searchSpecificMaterialByName(name, listIndex, size);
-        ctrl.searchSpecificFinancialByName(name, listIndex, size);
+        ctrl.searchSpecificMaterialByName(name);
+        ctrl.searchSpecificFinancialByName(name);
     }
     else
         if(com == 2){
+            unsigned int date;
+            cout<< "Give the date to entry: ";
+            cin>>date;
             
         }
 }
