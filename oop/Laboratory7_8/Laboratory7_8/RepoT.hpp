@@ -52,7 +52,7 @@ void RepoT<T>::addAccount(T c) {
 template<class T>
 int RepoT<T>::getSize() {
     int size;
-    size = this->conturi.size();
+    size = conturi.size();
     return size;
 }
 
