@@ -10,7 +10,7 @@
 
 using namespace std;
 
-Controller::Controller(Repository &repoM ,Repository &repo, RepositoryUser &repoUser):repoM(repoM), repo(repo), repoUser(repoUser){}
+Controller::Controller(Repository &repoM ,Repository &repoF, RepositoryUser &repoUser):repoM(repoM), repoF(repoF), repoUser(repoUser){}
 
 bool Controller::findUser(string userName, string password){
     User *users = repoUser.getAll();
@@ -21,20 +21,34 @@ bool Controller::findUser(string userName, string password){
     }
     return false;
 }
-Resource* Controller::getFinancial(){
-    return repo.getAll();
+Resource** Controller::getFinancial(){
+    return repoF.getAll();
 }
-Resource* Controller::getMaterial(){
+Resource** Controller::getMaterial(){
     return repoM.getAll();
 }
 
 int Controller::getSizeRepo(){
-    return repo.getSize();
+    return repoF.getSize();
 }
 
-void Controller::searchSpecificResource(){
-    
+void Controller::searchSpecificMaterialByName(string name , int listIndex[], int &size){
+    Resource ** elements = repoM.getAll();
+    for(int i=0; i<repoM.getSize(); i++){
+        if(elements[i]->getName() == name){
+            cout<<elements[i]->toString();
+            repoM.writeToFile("write.txt");
+        }
+    }
 }
-
+void Controller::searchSpecificFinancialByName(string name , int listIndex[], int &size){
+    Resource ** elements = repoF.getAll();
+    for(int i=0; i<repoF.getSize(); i++){
+        if(elements[i]->getName() == name){
+            cout<<elements[i]->toString();
+            repoF.writeToFile("write.txt");
+        }
+    }
+}
 
 

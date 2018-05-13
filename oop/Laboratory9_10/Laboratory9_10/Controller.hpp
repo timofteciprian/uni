@@ -19,19 +19,21 @@ class Controller{
 private:
     
     Repository &repoM;
-    Repository &repo;
+    Repository &repoF;
     RepositoryUser &repoUser;
     
 public:
     
-    Controller(Repository &repoM ,Repository &repo, RepositoryUser &repoUser);
+    Controller(Repository &repoM ,Repository &repoF, RepositoryUser &repoUser);
     
     bool findUser(string userName, string password);
     
-    Resource* getMaterial();
-    Resource* getFinancial();
+    Resource** getMaterial();
+    Resource** getFinancial();
     
-    void searchSpecificResource();
+    void searchSpecificMaterialByName(string name, int listIndex[], int &size);
+    void searchSpecificFinancialByName(string name, int listIndex[], int &size);
+    int searchSpecificResourceByDate(unsigned int date);
     int getSizeRepo();
     
     
