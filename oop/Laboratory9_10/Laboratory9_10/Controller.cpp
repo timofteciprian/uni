@@ -50,9 +50,23 @@ void Controller::searchSpecificFinancialByName(string name){
         }
     }
 }
-
 void Controller::searchSpecificMaterialByDate(unsigned int date){
-    
+    Resource ** elements = repoM.getAll();
+    for(int i=0; i<repoM.getSize(); i++){
+        if(elements[i]->getDateEntry() == date){
+            cout<<elements[i]->toString();
+            repoM.writeToFile("write.txt");
+        }
+    }
+}
+void Controller::searchSpecificFinancialByDate(unsigned int date){
+    Resource ** elements = repoF.getAll();
+    for(int i=0; i<repoF.getSize(); i++){
+        if(elements[i]->getDateEntry() == date){
+            cout<<elements[i]->toString();
+            repoF.writeToFile("write.txt");
+        }
+    }
 }
 
 

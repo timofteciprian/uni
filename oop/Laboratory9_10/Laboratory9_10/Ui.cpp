@@ -86,9 +86,12 @@ void Ui::searchSpecificResource(){
             unsigned int date;
             cout<< "Give the date to entry: ";
             cin>>date;
-            
+            ctrl.searchSpecificMaterialByDate(date);
+            ctrl.searchSpecificFinancialByDate(date);
         }
 }
+
+
 void Ui::run(){
     int com;
     bool quit = true;
