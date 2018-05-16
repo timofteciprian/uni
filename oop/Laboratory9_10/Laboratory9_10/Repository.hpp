@@ -33,18 +33,13 @@ public:
     void readMaterial(string Material);
     void readFinancial(string Financial);
     void add(Resource* elem);
-    
-    //    int search(T elem);
-    //    int getPoz(T elem);
     Resource** getAll();
-    //    T getElement(int poz);
     int getSize();
-    // Material* getMaterial();
+    void loadFromFile(string fileName);
     void writeToFile(const string fileName);
-    //void loadFromFile(const char* fileName);
-    //    inline T& operator [] (int pos) {
-    //        return elements[pos];
-    //    }
+    void modifyAMaterial(string name, unsigned int date, int value, int  lifeTime, int no,string newname, unsigned int newdate, int newvalue, int newlifetime, int newno );
+    void modifyAFinancial(string name, unsigned int date, int value, string coin, string newname, unsigned int newdate, int newvalue, string newcoin);
+    
 };
 
 

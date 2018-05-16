@@ -10,6 +10,7 @@
 #include "Repository.hpp"
 #include <iostream>
 #include <string>
+#include "Material.hpp"
 
 Repository::Repository(){
     elements = new Resource*[20];
@@ -70,14 +71,12 @@ void Repository::add(Resource* elem){
     //        if (elem == elements[i])
     //            return;
     //    }
-    //size = 0;
     if (size == 0){
         elements = new Resource*[100];
     }
     elements[size] = elem->clone();
     size++;
 }
-
 
 void Repository::writeToFile(const string fileName){
     ofstream fout;
@@ -87,7 +86,6 @@ void Repository::writeToFile(const string fileName){
     fout.close();
 }
 
-
 Resource** Repository::getAll(){
     return elements;
 }
@@ -95,49 +93,39 @@ int Repository::getSize(){
     return size;
 }
 
-//Material* Repository::getMaterial(){
-//    Material* elem = new Material();
-//    for(int i=0; i<size; i++){
-//        //elem = elements[i]->clone();
-//        return elements[i];
-//    }
-//}
-
-
-
-//Repository::loadFromFile(char* fileName){
-//    ifstream fin;
-//    fin.open(fileName);
-//    if (fin){
-//        while (!fin.eof()){
-//            T elem;
-//            fin >> elem;
-//            add(elem);
-//        }
-//        fin.close();
-//    }
-//    else
-//        cout << "Fisier corupt";
-//}
-//
-//template<class T> int Repository<T>::getPoz(T el){
-//    for (int i = 0; i < size; i++){
-//        if (elements[i] == el)
-//            return i;
-//    }
-//    return -1;
-//}
-//
-//template<class T> int Repository<T>::search(T elem){
-//    for (int i = 0; i < size; i++){
-//        if (elements[i] == elem)
-//            return 1;
-//    }
-//    return 0;
-//}
-
-//template<class T> T Repository<T>::getElement(int poz){
-//    return elements[poz];
-//}
-//
-
+void Repository::loadFromFile(string fileName){
+    if (fileName == "fileMaterial.txt")
+        readMaterial(fileName);
+    else
+        if(fileName == "fileFinancial.txt")
+            readFinancial(fileName);
+        else
+            cout << "Fisier corupt";
+}
+void Repository::modifyAMaterial(string name, unsigned int date, int value, int lifeTime, int no, string newname, unsigned int newdate, int newvalue, int newlifetime, int newno){
+    for(int i=0; i<getSize(); i++){
+        Material *elem = dynamic_cast<Material*>(elements[i]);
+        if(elem != nullptr ){
+            if(elem->Resource::getName() == name and elem->Resource::getDateEntry() == date and elem->Resource::getValue()==value and elem->getLifeTime()==lifeTime and elem->getNo()==no ){
+                elem->Resource::setName(newname);
+                elem->Resource::setDateEntry(newdate);
+                elem->Resource::setValue(newvalue);
+                elem->setLifeTime(newlifetime);
+                elem->setNo(newno);
+            }
+        }
+    }
+}
+void Repository::modifyAFinancial(string name, unsigned int date, int value,string coin, string newname, unsigned int newdate, int newvalue, string newcoin){
+    for(int i=0; i<getSize(); i++){
+        Financial *elem = dynamic_cast<Financial *>(elements[i]);
+        if(elem != nullptr ){
+            if(elem->Resource::getName() == name and elem->Resource::getDateEntry() == date and elem->Resource::getValue()==value and elem->getCoin()==coin ){
+                elem->Resource::setName(newname);
+                elem->Resource::setDateEntry(newdate);
+                elem->Resource::setValue(newvalue);
+                elem->setCoin(newcoin);
+            }
+        }
+    }
+}
