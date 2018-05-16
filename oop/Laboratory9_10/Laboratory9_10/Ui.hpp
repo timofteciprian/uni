@@ -27,6 +27,7 @@ public:
     bool login();
     void logout();
     void searchSpecificResource();
+    void modifyAResource();
     void run();
     
 };

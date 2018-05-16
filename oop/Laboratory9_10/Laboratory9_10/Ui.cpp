@@ -28,7 +28,6 @@ Ui::Ui(Controller &ctrl): ctrl(ctrl) {
 void Ui::mainSupport(){
     cout<<endl;
     cout<<"    ----------------------------------------    Main    ----------------------------------------"<<endl;
-    cout<<"       0. Exit."<<endl;
     cout<<"       1. Login."<<endl;
     cout<<"       2. Logout."<<endl;
     cout<<"   ---------------------------------------------------------------------------------------------"<<endl;
@@ -90,13 +89,119 @@ void Ui::searchSpecificResource(){
             ctrl.searchSpecificFinancialByDate(date);
         }
 }
-
+void Ui::modifyAResource(){
+    int command;
+    string name;
+    unsigned int date;
+    int value;
+    cout<<"Give the type of resource(1. Material / 2. Financial): ";
+    cin>>command;
+    cout<<"Give the name: ";
+    cin>>name;
+    cout<<"Give the date entry: ";
+    cin>>date;
+    cout<<"Give the value: ";
+    cin>>value;
+    if(command == 1){
+        int lifeTime, no, co;
+        cout<<"Give the lifetime: ";
+        cin>>lifeTime;
+        cout<<"Give the no: ";
+        cin>>no;
+        bool quit = true;
+        
+        while(quit){
+            cout<<"1. Name. 2. Date Entry. 3. Value.  4. Life Time.  5.No.  0. Exit."<<endl;
+            cout<<"Give what you want to change: ";
+            cin>>co;
+            switch (co) {
+                case 0:{
+                    quit = false;
+                }break;
+                case 1:{
+                    string newname;
+                    cout<<"Give new name: ";
+                    cin>>newname;
+                    ctrl.modifyAMaterial(name, date, value, lifeTime, no, newname, date, value, lifeTime, no);
+                }break;
+                case 2:{
+                    unsigned int newdate;
+                    cout<<"Give new date: ";
+                    cin>>newdate;
+                    ctrl.modifyAMaterial(name, date, value, lifeTime, no, name, newdate, value, lifeTime, no);
+                }break;
+                case 3:{
+                    int newvalue;
+                    cout<<"Give new value: ";
+                    cin>>newvalue;
+                    ctrl.modifyAMaterial(name, date, value, lifeTime, no, name, date, newvalue, lifeTime, no);
+                }break;
+                case 4:{
+                    int newlifetime;
+                    cout<<"Give new life time: ";
+                    cin>>newlifetime;
+                    ctrl.modifyAMaterial(name, date, value, lifeTime, no, name, date, value, newlifetime, no);
+                }break;
+                case 5:{
+                    int newno;
+                    cout<<"Give new no: ";
+                    cin>>newno;
+                    ctrl.modifyAMaterial(name, date, value, lifeTime, no, name, date, value, lifeTime, newno);
+                }break;
+            }
+        }
+    }
+    else
+        if(command == 2){
+            int co;
+            string coin;
+            cout<<"Give the coin: ";
+            cin>>coin;
+            bool quit = true;
+            
+            while(quit){
+                cout<<"1. Name. 2. Date Entry. 3. Value.  4. Life Time.  5.No.  0. Exit."<<endl;
+                cout<<"Give what you want to change: ";
+                cin>>co;
+                switch (co) {
+                    case 0:{
+                        quit = false;
+                    }break;
+                    case 1:{
+                        string newname;
+                        cout<<"Give new name: ";
+                        cin>>newname;
+                        ctrl.modifyAFinancial(name, date, value, coin, newname, date, value, coin);
+                    }break;
+                    case 2:{
+                        unsigned int newdate;
+                        cout<<"Give new date: ";
+                        cin>>newdate;
+                        ctrl.modifyAFinancial(name, date, value, coin, name, newdate, value, coin);
+                    }break;
+                    case 3:{
+                        int newvalue;
+                        cout<<"Give new value: ";
+                        cin>>newvalue;
+                        ctrl.modifyAFinancial(name, date, value, coin, name, date, newvalue, coin);
+                    }break;
+                    case 4:{
+                        string newcoin;
+                        cout<<"Give new coin: ";
+                        cin>>coin;
+                        ctrl.modifyAFinancial(name, date, value, coin, name, date, value, newcoin);
+                    }break;
+                }
+            }
+        }
+        else
+            cout<<" The commmand does't exist.";
+}
 
 void Ui::run(){
     int com;
     bool quit = true;
-    
-    printAllResources();
+   
     while(quit){
         
         mainSupport();
@@ -104,43 +209,44 @@ void Ui::run(){
         cin>>com;
         
         switch(com){
-            case 0:
+                
+            case 1:{
+                if(login()){
+                    cout<<"Login successfully"<<endl;
+                    printAllResources();
+                    bool quitt = true;
+                   
+                    while(quitt){
+                        
+                        mainOperations();
+                        int comOp;
+                        cout<<"Give the order: "<<endl;
+                        cin>>comOp;
+                        
+                        switch (comOp) {
+                            case 0:{
+                                quitt = false;
+                            }break;
+                            
+                            case 1:{
+                                printAllResources();
+                                searchSpecificResource();
+                            }break;
+                            
+                            case 2:{
+                                printAllResources();
+                                modifyAResource();
+                            }break;
+                        }
+                    }
+                }else{cout<<"unsuccessfully";}
+            }break;
+            
+            case 2:{
                 cout<<endl;
                 cout<<"bye bye";
                 quit = false;
-                break;
-                
-            case 1:
-                if(login()){
-                    cout<<"Login successfully"<<endl;
-                    mainOperations();
-                    int comOp;
-                    cout<<"Give the order: "<<endl;
-                    cin>>comOp;
-                    
-                    switch (comOp) {
-                        case 1:
-                            searchSpecificResource();
-                            break;
-                            
-                        default:
-                            break;
-                    }
-                    break;
-                    
-                }
-                else
-                    //break;
-                    cout<<"unsuccessfully";
-                
-            case 2:
-                
-                break;
-                
-            case 3:
-                
-                break;
-                
+            }break;
         }
     }
 }
