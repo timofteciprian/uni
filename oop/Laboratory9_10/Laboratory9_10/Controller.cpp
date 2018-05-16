@@ -68,5 +68,10 @@ void Controller::searchSpecificFinancialByDate(unsigned int date){
         }
     }
 }
+void Controller::modifyAMaterial(string name, unsigned int date, int value, int  lifeTime, int no,string newname, unsigned int newdate, int newvalue, int newlifetime, int newno){
+    repoM.modifyAMaterial(name, date, value, lifeTime, no,newname, newdate, newvalue, newlifetime, newno);
+}
 
-
+void Controller::modifyAFinancial(string name, unsigned int date, int value, string coin, string newname, unsigned int newdate, int newvalue, string newcoin){
+    repoM.modifyAFinancial(name, date, value,coin,newname, newdate, newvalue, newcoin);
+}

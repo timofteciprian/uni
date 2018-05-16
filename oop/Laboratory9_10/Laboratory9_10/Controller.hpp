@@ -35,6 +35,8 @@ public:
     void searchSpecificFinancialByName(string name);
     void searchSpecificMaterialByDate(unsigned int date);
     void searchSpecificFinancialByDate(unsigned int date);
+    void modifyAMaterial(string name, unsigned int date, int value, int  lifeTime, int no, string newname, unsigned int newdate, int newvalue, int newlifetime, int newno);
+    void modifyAFinancial(string name, unsigned int date, int value, string coin, string newname, unsigned int newdate, int newvalue, string newcoin);
     int getSizeRepo();
     
     
