@@ -8,7 +8,6 @@
 
 #include "Resource.hpp"
 #include <iostream>
-//#include <string.h>
 #include <string>
 
 using namespace std;
@@ -20,14 +19,6 @@ Resource::Resource(){
     
 }
 
-/*Resource* Resource::clone(){
- Resource* newResource;
- newResource = new Resource();
- newResource->setName(this->name);
- newResource->setDateEntry(this->dateEntry);
- newResource->setValue(this->value);
- return newResource;
- }*/
 Resource::Resource(Resource &m){
     name = m.name ;
     dateEntry = m.dateEntry;
@@ -87,27 +78,3 @@ Resource& Resource::operator=(const Resource &r) {
     }
     return *this;
 }
-
-
-////istream& operator>>(istream &is, Flower &f){
-//    char* s = new char[100];
-//    is >> s;
-//    char *next_token;
-//    char* aux = strtok_s(s, ";", &next_token);
-//    f.name = new char[strlen(aux) + 1];
-//    strcpy_s(f.name, strlen(aux) + 1, aux);
-//    aux = strtok_s(NULL, ";", &next_token);
-//    f.price = atoi(aux);
-//    return is;
-//}
-//ostream& operator<<(ostream &os, Resource &r){
-//    os << "Name " << r.name << endl;
-//    os << " Date: " << r.dateEntry << endl;
-//    os << " Value: " << r.value << endl;
-//    return os;
-//}
-
-
-//ostream& operator<<( ostream& output, Resource &r ) {
-//    return  output << "Name: " <<  r.name << endl << " Date: " << r.dateEntry<< endl << " Value: " << r.value << endl; }
-

@@ -25,7 +25,6 @@ protected:
 public:
     
     Resource();
-    //Resource(string name, unsigned int dateEntry, int value);
     Resource(Resource &m);
     virtual~Resource();
     
@@ -39,6 +38,7 @@ public:
     
     int getValue();
     void setValue(int value);
+    
     
     virtual Resource& operator=(const Resource &r);
     friend istream& operator>>( istream& input, Resource *r );
