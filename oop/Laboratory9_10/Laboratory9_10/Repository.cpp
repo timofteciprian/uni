@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include "Material.hpp"
+#include "Financial.hpp"
 
 Repository::Repository(){
     elements = new Resource*[20];
@@ -46,6 +47,7 @@ void Repository::readFinancial(string fileName){
         while (!fin.eof()){
             Financial *elem = new Financial();
             fin >> elem ;
+            if(elem->getValue())
             add(elem);
         }
         fin.close();
@@ -67,10 +69,6 @@ Repository::~Repository(){
 }
 
 void Repository::add(Resource* elem){
-    //    for (int i = 0; i < size; i++){
-    //        if (elem == elements[i])
-    //            return;
-    //    }
     if (size == 0){
         elements = new Resource*[100];
     }
@@ -85,6 +83,8 @@ void Repository::writeToFile(const string fileName){
         fout << elements[i];
     fout.close();
 }
+
+
 
 Resource** Repository::getAll(){
     return elements;
