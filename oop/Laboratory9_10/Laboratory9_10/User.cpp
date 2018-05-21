@@ -43,22 +43,14 @@ void User::setPasssword(string password){
 }
 
 istream& operator>>( istream& input, User & u) {
-    // User user;
-    //string userN, passw;
     input >> u.userName;
-    //user.setUserName(userN);
     input >> u.password;
-    //user.setPasssword(passw);
     return input ;
 }
 
 ostream& operator<<( ostream& output, User & u) {
-    //User user;
-    //string userN, passw;
     output << "User Name: "<< u.userName <<endl;
-    //user.setUserName(userN);
     output << "Password: "<< u.password <<endl;
-    //user.setPasssword(passw);
     return output ;
 }
 

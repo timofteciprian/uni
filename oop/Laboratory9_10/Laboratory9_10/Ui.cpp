@@ -5,16 +5,6 @@
 //  Created by Timofte Ciprian Andrei on 10/05/2018.
 //  Copyright © 2018 Timofte Ciprian Andrei. All rights reserved.
 //
-
-#include "Ui.hpp"
-//
-//  Ui.cpp
-//  Lab9_10
-//
-//  Created by Timofte Ciprian Andrei on 10/05/2018.
-//  Copyright © 2018 Timofte Ciprian Andrei. All rights reserved.
-//
-
 #include "Ui.hpp"
 #include <iostream>
 #include "Resource.hpp"
@@ -41,21 +31,27 @@ bool Ui::login(){
     cin>>userName;
     cout<<"Password: ";
     cin>>password;
-    if(this->ctrl.findUser(userName, password))
+    try{
+        this->ctrl.findUser(userName);
         return true;
-    return false;
+    }
+    catch (Exception &e){
+        cout<< "Exception: "<< e.getMessage()<< endl;
+        return false;
+        
+    }
 }
 
-void Ui::printAllResources(){
-    Resource** resF = ctrl.getFinancial();
-    for(int i=0; i<ctrl.getSizeRepo(); i++ ){
-        cout << resF[i]->toString();
-    }
-    Resource** resM = ctrl.getMaterial();
-    for(int i=0; i<ctrl.getSizeRepo(); i++ ){
-        cout << resM[i]->toString();
-    }
-}
+//void Ui::printAllResources(){
+//    Resource** resF = ctrl.getFinancial();
+//    for(int i=0; i<ctrl.getSizeRepo(); i++ ){
+//        cout << resF[i]->toString();
+//    }
+//    Resource** resM = ctrl.getMaterial();
+//    for(int i=0; i<ctrl.getSizeRepo(); i++ ){
+//        cout << resM[i]->toString();
+//    }
+//}
 
 void Ui::mainOperations(){
     cout<<endl;
@@ -77,16 +73,38 @@ void Ui::searchSpecificResource(){
         string name;
         cout<<"Give the name: ";
         cin>>name;
-        ctrl.searchSpecificMaterialByName(name);
-        ctrl.searchSpecificFinancialByName(name);
+        try{
+            ctrl.searchSpecificMaterialByName(name);
+        }
+        catch (Exception &e){
+            cout<< "Exception: "<< e.getMessage()<< endl;
+        }
+        try{
+            ctrl.searchSpecificFinancialByName(name);
+        }
+        catch (Exception &e){
+            cout<< "Exception: "<< e.getMessage()<< endl;
+            
+        }
     }
     else
         if(com == 2){
             unsigned int date;
             cout<< "Give the date to entry: ";
             cin>>date;
-            ctrl.searchSpecificMaterialByDate(date);
-            ctrl.searchSpecificFinancialByDate(date);
+            try{
+                ctrl.searchSpecificMaterialByDate(date);
+            }
+            catch (Exception &e){
+                cout<< "Exception: "<< e.getMessage()<< endl;
+            }
+            try{
+                 ctrl.searchSpecificFinancialByDate(date);
+            }
+            catch (Exception &e){
+                cout<< "Exception: "<< e.getMessage()<< endl;
+                
+            }
         }
 }
 void Ui::modifyAResource(){
@@ -183,13 +201,13 @@ void Ui::modifyAResource(){
                         int newvalue;
                         cout<<"Give new value: ";
                         cin>>newvalue;
-                        ctrl.modifyAFinancial(name, date, value, coin, name, date, newvalue, coin);
+                        ctrl.modifyAFinancial(name, date, value, coin, name, date, value, coin);
                     }break;
                     case 4:{
-                        string newcoin;
+                        string coin;
                         cout<<"Give new coin: ";
                         cin>>coin;
-                        ctrl.modifyAFinancial(name, date, value, coin, name, date, value, newcoin);
+                        ctrl.modifyAFinancial(name, date, value, coin, name, date, value, coin);
                     }break;
                 }
             }
@@ -213,7 +231,7 @@ void Ui::run(){
             case 1:{
                 if(login()){
                     cout<<"Login successfully"<<endl;
-                    printAllResources();
+                    
                     bool quitt = true;
                    
                     while(quitt){
@@ -229,13 +247,17 @@ void Ui::run(){
                             }break;
                             
                             case 1:{
-                                printAllResources();
+                                //printAllResources();
                                 searchSpecificResource();
+                                ctrl.writeToHTML();
+                                ctrl.writeToCSV();
                             }break;
                             
                             case 2:{
-                                printAllResources();
+                               // printAllResources();
                                 modifyAResource();
+                                ctrl.writeToHTML();
+                                ctrl.writeToCSV();
                             }break;
                         }
                     }
@@ -250,3 +272,33 @@ void Ui::run(){
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
