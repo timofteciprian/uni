@@ -17,11 +17,6 @@ Material::Material():Resource(){
     no = 0;
 }
 
-//Material::Material(string name, unsigned int dateEntry, int value, int lifeTime, int no):Resource(name, dateEntry, value){
-//    this->lifeTime = lifeTime;
-//    this->no = no;
-//}
-
 Material::Material(Material &m):Resource(m){
     lifeTime = m.lifeTime;
     no = m.no;
@@ -44,12 +39,7 @@ void Material::setNo(int n){
     no = n;
 }
 
-//istream& operator>>( istream& input, Material *m ) {
-//    m->read(input);
-//    return input ;
-//}
 void Material::read(istream &input){
-    //input >> static_cast<Resource*>();
     string name;
     unsigned int dateEntry;
     int value;
@@ -63,13 +53,7 @@ void Material::read(istream &input){
     input >> no;
 }
 
-//ostream& operator <<(ostream& output,const Material *m){
-//    m->write(output);
-//    return output;
-//}
-
 void Material::write(ostream &output){
-    //output << static_cast<const Resource*>(m);
     output << "Name: " << getName() << endl;
     output << "Date: "<< getDateEntry() << endl;
     output << "Value: " << getValue() <<endl;

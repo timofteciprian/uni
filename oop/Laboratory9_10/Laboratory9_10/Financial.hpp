@@ -23,7 +23,6 @@ private:
     
 public:
     Financial();
-    //Financial(string name, unsigned int dateEntry, int value, string coin);
     Financial(Financial & f);
     ~Financial();
     
@@ -35,30 +34,6 @@ public:
     virtual void read(istream& input)override;
     virtual void write(ostream& output)override;
     
-    
-    //friend istream& operator>> ( istream& input, Financial* f );
-    //friend ostream& operator <<(ostream& output,const Financial *f);
-    
-    //
-    //    virtual istream& read(istream& input ) override {
-    //        Resource::read(input);
-    //        string coin;
-    //        input >> coin;
-    //        this->coin = coin;
-    //        return input ;
-    //    }
-    
-    //    //    virtual ostream& write( ostream& output ) const override
-    //    //    { return Resource::write(output) << " Coin: " << coin << endl ; }
-    //    //
-    //
-    //    bool operator==(const Financial &f) const{
-    //        return this->coin == f.coin;
-    //    }
-    //
-    //    Financial& operator=(const Financial &f);
-    //
-    //
     string toString()override;
 };
 

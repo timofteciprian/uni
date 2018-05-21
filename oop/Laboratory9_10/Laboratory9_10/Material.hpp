@@ -26,7 +26,6 @@ private:
 public:
     
     Material();
-    //Material(string name, unsigned int dateEntry, int value, int lifeTime, int no);
     Material(Material &m);
     ~Material();
     
@@ -40,12 +39,7 @@ public:
     
     virtual void read(istream& input)override;
     virtual void write(ostream& output)override;
-    
-    
-    //    bool operator==(const Material &m) const{
-    //        return this->lifeTime == m.lifeTime and this->no == m.no;
-    //    }
-    
+ 
     Material& operator=(const Material &m);
     string toString()override;
     
