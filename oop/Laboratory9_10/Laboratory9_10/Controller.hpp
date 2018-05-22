@@ -12,6 +12,7 @@
 #include "User.hpp"
 #include "Repository.hpp"
 #include "RepositoryUser.hpp"
+#include "Exception.hpp"
 #include <stdio.h>
 #include <iostream>
 
@@ -26,7 +27,7 @@ public:
     
     Controller(Repository &repoM ,Repository &repoF, RepositoryUser &repoUser);
     
-    bool findUser(string userName, string password);
+    bool findUser(string userName);
     
     Resource** getMaterial();
     Resource** getFinancial();
@@ -38,8 +39,8 @@ public:
     void modifyAMaterial(string name, unsigned int date, int value, int  lifeTime, int no, string newname, unsigned int newdate, int newvalue, int newlifetime, int newno);
     void modifyAFinancial(string name, unsigned int date, int value, string coin, string newname, unsigned int newdate, int newvalue, string newcoin);
     int getSizeRepo();
-    
-    
+    void writeToHTML();
+    void writeToCSV();
 };
 
 #endif /* Controller_hpp */
