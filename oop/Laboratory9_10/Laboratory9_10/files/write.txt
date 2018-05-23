@@ -1,0 +1,10 @@
+Name: Bureti
+Date: 20
+Value: 10
+Life Time: 12
+No: 13
+Name: Sare
+Date: 10
+Value: 2
+Life Time: 33
+No: 3234
