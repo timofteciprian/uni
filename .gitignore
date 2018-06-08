@@ -32,3 +32,9 @@
 *.app
 **/.DS_Store
 **/*.xcodeproj
+
+*.xml
+
+*.iml
+
+*.json
