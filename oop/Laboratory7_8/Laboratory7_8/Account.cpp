@@ -8,6 +8,15 @@
 
 #include "Account.hpp"
 
+
+//constructor default
+Account::Account() {
+    Account::pin=0;
+}
+
+//constructor cu parametrii
+Account::Account(const string &name, const string &id, unsigned int pin) : name(name), id(id), pin(pin) {}
+
 Account::Account(unsigned int pin) : pin(pin) {pin=0;}
 
 Account::~Account() {
@@ -42,15 +51,6 @@ void Account::setId(const string &id) {
 //seteaza pin ul
 void Account::setPin(unsigned int pin) {
     Account::pin = pin;
-}
-
-//constructor cu parametrii
-Account::Account(const string &name, const string &id, unsigned int pin) : name(name), id(id), pin(pin) {}
-
-
-//constructor default
-Account::Account() {
-    Account::pin=0;
 }
 
 //operator

@@ -110,7 +110,7 @@ void Controller::writeToHTML() {
                 fout << "    <td>" << elem->getValue() << "</td>\n";
                 fout << "    <td>" << elem->getLifeTime() << "</td>\n";
                 fout << "    <td>" << elem->getNo() << "</td>\n";
-
+            
         }
         fout << "  </tr>\n";
     }
