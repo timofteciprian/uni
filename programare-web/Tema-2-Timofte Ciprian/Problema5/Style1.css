@@ -1,0 +1,29 @@
+ul{
+	list-style-type:none;
+	padding:0;
+
+}
+img {
+	height:160px;
+	width:160px;
+}
+ul li{
+	display:inline-block;	
+	background-color:red  ;
+	
+
+}
+
+#poza1 , #poza2 , #poza3 , #poza4{
+	margin:25px;
+}
+div{
+	
+	height:700 px;
+	width:450px;
+	border:solid black 1px;
+}
+p{
+	text-align:center;
+	
+}

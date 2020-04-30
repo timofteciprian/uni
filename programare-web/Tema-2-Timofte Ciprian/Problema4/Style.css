@@ -1,0 +1,67 @@
+
+ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.sprite{
+	 width: 84px; /* Icon width */
+     height: 84px; /* Icon height */
+	 background: url(css-pr4.png);
+	 display:block; 
+}
+
+ .facebook {
+        background-position: 0 84px; /* Icon background position in sprite */
+    }
+	
+.infinit{
+	background-position: -84px 84px; /* Icon background position in sprite */
+    }
+.baschet
+{   
+        background-position: -168px 84px; /* Icon background position in sprite */
+    }
+	
+.google{            
+        background-position: -252px 84px; /* Icon background position in sprite */
+    }
+.in{             
+        background-position: -336px 84px; /* Icon background position in sprite */
+    }
+	
+.proz{        
+        background-position: -420px 84px; /* Icon background position in sprite */
+    }
+.wifi{       
+        background-position: -504px 84px; /* Icon background position in sprite */
+    }
+	
+.skype{         
+        background-position: -588px 84px; /* Icon background position in sprite */
+    }
+.twitter{       
+        background-position: -672px 84px; /* Icon background position in sprite */
+    }
+
+
+.v{         
+        background-position: -756px 84px; /* Icon background position in sprite */
+    }
+
+
+.youtube{ background-position: -840px 84px; /* Icon background position in sprite */}
+.facebook:hover{ background-position: 0 0; /* Icon background position in sprite */}
+.infinit:hover{	background-position: -84px 0px; /* Icon background position in sprite */}
+.baschet:hover{background-position: -168px 0px; /* Icon background position in sprite */}
+.google:hover{background-position: -252px 0px; /* Icon background position in sprite */}
+.in:hover{    background-position: -336px 0px; /* Icon background position in sprite */}
+.proz:hover{    background-position: -420px 0px; /* Icon background position in sprite */}
+.wifi:hover{    background-position: -504px 0px; /* Icon background position in sprite */}
+.skype:hover{    background-position: -588px 0px; /* Icon background position in sprite */}
+.twitter:hover{    background-position: -672px 0px; /* Icon background position in sprite */}
+.v:hover{    background-position: -756px 0px; /* Icon background position in sprite */}
+.youtube:hover{    background-position: -840px 0px; /* Icon background position in sprite */}

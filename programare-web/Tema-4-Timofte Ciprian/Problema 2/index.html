@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
+<script src='valiadtion.js'></script>
+
+<body>
+
+<form id='register'>
+    <h1>Register:</h1>
+    <div class='tab'>
+        <div>Nume:</div>
+        <input placeholder='Name' name='name'>
+    </div>
+    &nbsp;
+    <div class='tab'>
+        <div>Zi de nastere:</div>
+        <input placeholder='Birthday' name='birthday'>
+    </div>
+    &nbsp;
+    <div class='tab'>
+        <div>Varsta:</div>
+        <input placeholder='Age' name='age'>
+    </div>
+    &nbsp;
+    <div class='tab'>
+        <div>E-mail:</div>
+        <input placeholder='E-mail' name='email'>
+    </div>
+    &nbsp;
+</form>
+<button
+    id="buton"
+    onclick={validate()}
+>
+    Trimite
+</button>
+</body>
+
+</html>

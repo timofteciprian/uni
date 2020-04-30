@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel='stylesheet' type='text/css' href='Style1.css'>
+</head>
+<body><div>
+<ul id='fisrtt'>
+<li></li>
+<li><img src='poza1.jpg' id='poza1' /> <p>poza1</p></li>
+<li><img src='poza2.jfif' id='poza2' /><p>poza2</p></li>
+</ul>
+
+<ul id='secondd'>
+<li><img src='poza3.jpg' id='poza3' /><p>poza3</p></li>
+<li><img src='poza4.jpg' id='poza4' /><p>poza4</p></li>
+</ul>
+</div>
+</body>
+</html>

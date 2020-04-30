@@ -1,0 +1,57 @@
+header{
+	background-color:red;
+	height:100px;
+		line-height:100px;
+		vertical-align: center;
+}
+
+#view{
+	background-color:green;
+	height:90%;
+	width:85%;
+	line-height:400px;
+	vertical-align: center;
+	float:right;
+	vertical-align: top;
+}
+#menu {
+	list-style-type:none;
+	background-color:yellow;
+	margin: 0;
+	padding: 0;
+	text-align:left;
+	float: left; 
+	vertical-align: top;
+	width:15%;
+	height:90%;
+	
+	
+}
+#menu li{	
+		border-bottom:1px solid black;
+		width: 100%;
+		
+		
+}
+
+#menu li:last-child {
+  border: none;
+}
+
+body{
+	height:500px;
+	
+  margin: 0;
+	
+}
+
+
+
+#footer{
+	
+	height:110%;
+	line-height:100px;
+		vertical-align: center;
+background-color:pink;
+}
+

@@ -1,0 +1,48 @@
+header{
+	background-color:red;
+	height:100px;
+		line-height:100px;
+		vertical-align: center;
+}
+#menu {
+	list-style-type:none;
+	background-color:yellow;
+	margin: 0;
+	padding: 0;
+	text-align:left;
+}
+#menu li{
+		display:inline-block;	
+		border-right:1px solid black;
+		width: 19%;
+		
+		
+}
+
+#menu li:last-child {
+  border: none;
+}
+
+body{
+	height:500px;
+
+  margin: 0;
+}
+
+#view{
+	background-color:green;
+	height:90%;
+	line-height:400px;
+	vertical-align: center;
+
+}
+
+#footer{
+	background-color:pink;
+	height:16%;
+	line-height:100px;
+		vertical-align: center;
+}
+p{
+	text-align:center;
+}

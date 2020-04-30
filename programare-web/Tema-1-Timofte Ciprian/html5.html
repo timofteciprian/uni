@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+</head>
+
+<body>
+    <form id='form-div' action='POST'>
+        <table id='form-table' border='2'>
+            <thead>
+                <tr>
+                    <th colspan='2'>Formular de &#238nscriere la facultate </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td style='vertical-align:initial;'>
+                        <table id='f-1'>
+                            <thead>
+                                <tr>
+                                    <th colspan='4'>Detalii aplicant:</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Nume:</td>
+                                    <td><input required id='nume' type='text' name='nume' maxlength='20' placeholder=''>
+                                    </td>
+
+                                    <td>Prenume:</td>
+                                    <td><input required id='prenume' type='text' name='prenume' maxlength='20'
+                                            placeholder=''></td>
+                                </tr>
+
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td><input required id='email' type='email' name='email' maxlength='60'
+                                            placeholder=''></td>
+
+                                    <td>Gen:</td>
+                                    <td>
+                                        <input required type='radio' name='gender' value='m'>Masculin
+                                        <input type='radio' name='gender' value='f'>Feminin
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan='3'>Adresa:</td>
+                                    <td>Oras:</td>
+                                    <td>
+                                        <select id='city'>
+                                            <option value='cj'selected='selected'>Cluj-Napoca</option>
+                                            <option value='b' >Bucuresti</option>
+                                            <option value='tm'>Timisoara</option>
+                                            <option value='sb'>Sibiu</option>
+                                            <option value='or'>Oradea</option>
+                                            <option value='bv'>Brasov</option>
+                                            <option value='sm'>Satul Mare</option>
+                                            <option value='bn'>Bistrita</option>
+                                            <option value='fc'>Focsani</option>
+                                            <option value='ct'>Constanta</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Adresa 1:</td>
+                                    <td><input type='text' maxlength='40' name='adr1'></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Adresa 2:</td>
+                                    <td><input type='text' maxlength='40' name='adr2'></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <table id='f-2'>
+                            <thead>
+                            <tr>
+                                <th colspan='4'>V&#259 rug&#259m completa&#355i urm&#259toarele:</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td>Specializarea:</td>
+                                <td>
+                                    <select id='specializarea'>
+                                        <option value='ifRo' selected='selected'>Informatic&#259</option>
+                                        <option value='ifEn'>Informatic&#259 Englez&#259</option>
+                                        <option value='ifGe' >Informatic&#259 German&#259</option>
+                                        <option value='ifMa' >Informatic&#259 Maghiar&#259</option>
+                                        <option value='maIfRo' >Matematc&#259 Informatic&#259</option>
+                                        <option value='maIfEn' >Matematc&#259 Informatic&#259 Englez&#259</option>
+                                        <option value='maIfGe' >Matematc&#259 Informatic&#259 German&#259</option>
+                                        <option value='maIfMa' >Matematc&#259 Informatic&#259 Maghiar&#259</option>
+                                        <option value='maRo' >Matematc&#259</option>
+                                        <option value='maEn' >Matematc&#259 Englez&#259</option>
+                                        <option value='maGe' >Matematc&#259 German&#259</option>
+                                        <option value='maMa' >Matematc&#259 Maghiar&#259</option>
+                                    </select>
+                                </td>
+
+                                <td>Medie bacalaureat</td>
+                                <td>
+                                    <input
+                                        required
+                                        id='medieBac'
+                                        type='number'
+                                        name='medieBac'
+                                        value=''
+                                        min='1'
+                                        max='10'
+                                    >
+                                </td>
+                            </tr>
+
+
+                            <th>Limba englez&#259</th>
+
+                            <tr>
+                                <td>Vorbit:</td>
+                                <td colspan='3'>
+                                    <input type='radio' name='vb' value='1' checked='checked'>1
+                                    <input type='radio' name='vb' value='2'>2
+                                    <input type='radio' name='vb' value='3'>3
+                                    <input type='radio' name='vb' value='4'>4
+                                    <input type='radio' name='vb' value='5'>5
+                                    <input type='radio' name='vb' value='6'>6
+                                    <input type='radio' name='vb' value='7'>7
+                                    <input type='radio' name='vb' value='8'>8
+                                    <input type='radio' name='vb' value='9'>9
+                                    <input type='radio' name='vb' value='10'>10
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Scris:</td>
+                                <td colspan='3'>
+                                    <input type='radio' name='sc' value='1' checked='checked'>1
+                                    <input type='radio' name='sc' value='2'>2
+                                    <input type='radio' name='sc' value='3'>3
+                                    <input type='radio' name='sc' value='4'>4
+                                    <input type='radio' name='sc' value='5'>5
+                                    <input type='radio' name='sc' value='6'>6
+                                    <input type='radio' name='sc' value='7'>7
+                                    <input type='radio' name='sc' value='8'>8
+                                    <input type='radio' name='sc' value='9'>9
+                                    <input type='radio' name='sc' value='10'>10
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>In&#355elegere:</td>
+                                <td colspan='3'>
+                                    <input type='radio' name='int' value='1' checked='checked'>1
+                                    <input type='radio' name='int' value='2'>2
+                                    <input type='radio' name='int' value='3'>3
+                                    <input type='radio' name='int' value='4'>4
+                                    <input type='radio' name='int' value='5'>5
+                                    <input type='radio' name='int' value='6'>6
+                                    <input type='radio' name='int' value='7'>7
+                                    <input type='radio' name='int' value='8'>8
+                                    <input type='radio' name='int' value='9'>9
+                                    <input type='radio' name='int' value='10'>10
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Cum ai aflat de aceast&#259 facultate:</td>
+                                <td colspan='3'>
+                                    <table>
+                                        <tr>
+                                            <td><input type='checkbox' value='prieteni'>Prieteni</td>
+                                            <td><input type='checkbox' value='colegi'>Colegi</td>
+                                            <td><input type='checkbox' value='internet'>Internet</td>
+                                            <td><input type='checkbox' value='televizor'>Televizor</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan='2'>
+                        <table id='f-3'>
+                            <thead>
+                                <tr>
+                                    <th>&#206ntreb&#259ri</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <ol type='1' start='1'>
+
+                                            <li>Ce te-a facut s&#259 aplici la faculatea noastr&#259?
+                                                <br>
+                                                <input type='text' maxlength='200' size='100%' value=''>
+                                            </li>
+
+                                            <li>Care crezi c&#259 sunt calit&#259&#355ile tale?
+                                                <br>
+                                                <input type='text' maxlength='200' size='100%'>
+                                            </li>
+
+                                            <li>Care crezi c&#259 sunt defectele tale?
+                                                <br>
+                                                <input type='text' maxlength='100' size='100%'>
+                                            </li>
+
+                                        </ol>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan='2'>
+                        <table id='f-4'>
+                            <thead>
+                                <tr>
+                                    <th colspan='3'>Opinii</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <center>Ce a&#351tept&#259ri ai de la faculatea nostr&#259?</center>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><textarea cols='110' rows='5'></textarea></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan='2'>
+                        <center><input type='submit'></center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <br><br>
+</body>
+
+</html>
